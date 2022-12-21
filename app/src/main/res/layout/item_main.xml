@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".presentation.MainActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/posterTitle"
+        android:adjustViewBounds="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:src="@tools:sample/avatars"/>
+
+    <TextView
+        android:id="@+id/artistNameTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        tools:text="Name"/>
+
+    <TextView
+        android:id="@+id/lyricsTitleTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        tools:text="Lyrics title"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
