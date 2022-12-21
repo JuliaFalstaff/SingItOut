@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".presentation.MainActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageArtist"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        tools:src="@tools:sample/avatars"/>
+
+    <TextView
+        android:id="@+id/artistNameTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="14sp"
+        tools:text="Name"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
