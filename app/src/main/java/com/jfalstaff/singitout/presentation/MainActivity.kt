@@ -1,9 +1,12 @@
 package com.jfalstaff.singitout.presentation
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.paging.map
 import com.jfalstaff.singitout.databinding.ActivityMainBinding
 import com.jfalstaff.singitout.presentation.adapters.SearchAdapter
@@ -17,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: SearchAdapter
     private lateinit var adapterArtist: SearchArtistAdapter
-    private val viemodel by lazy {
+    private val viewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
 
@@ -25,28 +28,57 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        adapter = SearchAdapter()
-        binding.recyclerSearch.adapter = adapter
-        adapterArtist = SearchArtistAdapter()
-        binding.horizontalRV.adapter = adapterArtist
-//        viemodel.loadSearchResult("the national")
-//        viemodel.searchResult.observe(this) {
-//            adapter.submitData(it)
-//            adapterArtist.submitList(it.response.hits?.distinctBy { hit ->
-//                hit.result.primaryArtist }
-//            )
-//        }
+        initAdapters()
+        getPagingSearchData()
+        addAdaptersStateListeners()
+    }
+
+    private fun addAdaptersStateListeners() {
+        adapter.addLoadStateListener {
+            when (it.refresh) {
+                is LoadState.Loading -> {
+                    binding.progressBarSearch.visibility = View.VISIBLE
+                    binding.ArtistHeaderTextView.visibility = View.INVISIBLE
+                    binding.LyricsHeaderTextView.visibility = View.INVISIBLE
+                }
+                is LoadState.NotLoading -> {
+                    binding.progressBarSearch.visibility = View.INVISIBLE
+                    binding.ArtistHeaderTextView.visibility = View.VISIBLE
+                    binding.LyricsHeaderTextView.visibility = View.VISIBLE
+                }
+                is LoadState.Error -> {
+                    binding.progressBarSearch.visibility = View.INVISIBLE
+                    binding.ArtistHeaderTextView.visibility = View.INVISIBLE
+                    binding.LyricsHeaderTextView.visibility = View.INVISIBLE
+                    Toast.makeText(
+                        this,
+                        "Error: ${(it.refresh as LoadState.Error).error.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                }
+            }
+        }
+    }
+
+    private fun getPagingSearchData() {
         this.lifecycleScope.launch {
-            viemodel.getPagingData("cocorosie").collectLatest {
+            viewModel.getPagingData("cocorosie").collectLatest {
                 adapter.submitData(it)
             }
         }
         this.lifecycleScope.launch {
-            viemodel.getPagingDataOfArtist("cocorosie").collectLatest {
+            viewModel.getPagingDataOfArtist("cocorosie").collectLatest {
                 adapterArtist.submitData(it.map { it.result.primaryArtist })
             }
-
         }
+    }
+
+    private fun initAdapters() {
+        adapter = SearchAdapter()
+        binding.recyclerSearch.adapter = adapter
+        adapterArtist = SearchArtistAdapter()
+        binding.horizontalRV.adapter = adapterArtist
     }
 
 

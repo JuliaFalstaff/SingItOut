@@ -39,5 +39,12 @@
         app:spanCount="2"
         tools:listitem="@layout/item_main" />
 
+    <ProgressBar
+        android:id="@+id/progressBarSearch"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
