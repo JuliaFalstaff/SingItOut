@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.paging.PagingDataAdapter
 import androidx.paging.map
 import com.jfalstaff.singitout.databinding.ActivityMainBinding
 import com.jfalstaff.singitout.presentation.adapters.SearchAdapter
@@ -55,7 +56,6 @@ class MainActivity : AppCompatActivity() {
                         "Error: ${(it.refresh as LoadState.Error).error.message}",
                         Toast.LENGTH_SHORT
                     ).show()
-
                 }
             }
         }
