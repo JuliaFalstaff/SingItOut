@@ -21,8 +21,9 @@ class SearchResponsePagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Hit> {
         return try {
-            val pageNumber = params.key ?: 1
-            val responseFromApi = apiService.searchResult(searchExpression, pageNumber)
+            val pageNumber = params.key ?: STARTING_KEY
+            val pageSize = params.loadSize
+            val responseFromApi = apiService.searchResult(searchExpression, pageNumber, pageSize)
             val nextKey = if (responseFromApi.response.hits.isNullOrEmpty()) {
                 null
             } else {
@@ -30,7 +31,7 @@ class SearchResponsePagingSource(
             }
             LoadResult.Page(
                 data = responseFromApi.response.hits ?: listOf(),
-                prevKey = if (pageNumber == STARTING_KEY) null else pageNumber,
+                prevKey = if (pageNumber == STARTING_KEY) null else pageNumber - 1,
                 nextKey = nextKey
             )
         } catch (e: IOException) {
@@ -41,6 +42,6 @@ class SearchResponsePagingSource(
     }
 
     companion object {
-        private  val STARTING_KEY = 15
+        private  val STARTING_KEY = 1
     }
 }

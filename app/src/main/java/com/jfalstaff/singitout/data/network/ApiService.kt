@@ -5,10 +5,10 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-
     @GET("search")
     suspend fun searchResult(
         @Query("q") searchExpression: String,
-        @Query("per_page") per_page: Int = 15
+        @Query("page") page: Int,
+        @Query("per_page") per_page: Int
     ): ResponseServer
 }
