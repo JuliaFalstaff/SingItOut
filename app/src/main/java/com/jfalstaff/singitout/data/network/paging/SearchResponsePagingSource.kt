@@ -42,6 +42,6 @@ class SearchResponsePagingSource(
     }
 
     companion object {
-        private  val STARTING_KEY = 1
+        private val STARTING_KEY = 1
     }
 }
