@@ -2,27 +2,42 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".presentation.MainActivity">
+
+    <TextView
+        android:id="@+id/ArtistHeaderTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/related_artists_search_header" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/horizontalRV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_main_artist"/>
+        tools:listitem="@layout/item_main_artist" />
+
+    <TextView
+        android:id="@+id/LyricsHeaderTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/related_lyrics_search_header" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="8dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"
-        tools:listitem="@layout/item_main"/>
-
+        tools:listitem="@layout/item_main" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

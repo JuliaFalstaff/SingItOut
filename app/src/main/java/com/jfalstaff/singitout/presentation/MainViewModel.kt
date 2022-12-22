@@ -28,6 +28,7 @@ class MainViewModel(): ViewModel() {
                  }
                 .collect { response ->
                     _searchResult.value = response
+                    Log.d("VVV", response.toString())
                 }
 
         }

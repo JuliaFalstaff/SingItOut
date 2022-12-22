@@ -30,10 +30,12 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerSearch.adapter = adapter
         adapterArtist = SearchArtistAdapter()
         binding.horizontalRV.adapter = adapterArtist
-        viemodel.loadSearchResult("yves")
-        viemodel.searchResult.observe(this) {
+        viemodel.loadSearchResult("the national")
+        viemodel.searchResult.observe(this) { it ->
             adapter.submitList(it.response.hits)
-            adapterArtist.submitList(it.response.hits?.distinctBy { it.result.primaryArtist })
+            adapterArtist.submitList(it.response.hits?.distinctBy { hit ->
+                hit.result.primaryArtist }
+            )
         }
     }
 }

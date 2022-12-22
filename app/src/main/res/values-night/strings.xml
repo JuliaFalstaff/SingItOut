@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Sing it out</string>
     <string name="related_artists_search_header">Related Artists</string>
     <string name="related_lyrics_search_header">Related Lyrics</string>
 </resources>
