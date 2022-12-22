@@ -34,6 +34,6 @@ class RepositoryImpl(val apiService: ApiService): IRepository {
     }
 
     companion object {
-        private const val ITEMS_PER_PAGE = 15
+        private val ITEMS_PER_PAGE = 10
     }
 }

@@ -8,8 +8,8 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class SearchResponsePagingSource(
-    val apiService: ApiService,
-    val searchExpression: String
+    private val apiService: ApiService,
+    private val searchExpression: String
 ) : PagingSource<Int, Hit>() {
 
     override fun getRefreshKey(state: PagingState<Int, Hit>): Int? {
@@ -21,7 +21,7 @@ class SearchResponsePagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Hit> {
         return try {
-            val pageNumber = params.key ?: STARTING_KEY
+            val pageNumber = params.key ?: 1
             val responseFromApi = apiService.searchResult(searchExpression, pageNumber)
             val nextKey = if (responseFromApi.response.hits.isNullOrEmpty()) {
                 null
@@ -41,6 +41,6 @@ class SearchResponsePagingSource(
     }
 
     companion object {
-        private const val STARTING_KEY = 15
+        private  val STARTING_KEY = 15
     }
 }

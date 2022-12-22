@@ -1,25 +1,19 @@
 package com.jfalstaff.singitout.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.filter
-import androidx.paging.flatMap
 import androidx.paging.map
-import com.jfalstaff.singitout.R
-import com.jfalstaff.singitout.data.network.ApiFactory
 import com.jfalstaff.singitout.databinding.ActivityMainBinding
 import com.jfalstaff.singitout.presentation.adapters.SearchAdapter
 import com.jfalstaff.singitout.presentation.adapters.SearchArtistAdapter
-import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     private lateinit var adapter: SearchAdapter
     private lateinit var adapterArtist: SearchArtistAdapter
@@ -36,19 +30,31 @@ class MainActivity : AppCompatActivity() {
         adapterArtist = SearchArtistAdapter()
         binding.horizontalRV.adapter = adapterArtist
 //        viemodel.loadSearchResult("the national")
-//        viemodel.searchResult.observe(this) { it ->
-//            adapter.submitList(it.response.hits)
+//        viemodel.searchResult.observe(this) {
+//            adapter.submitData(it)
 //            adapterArtist.submitList(it.response.hits?.distinctBy { hit ->
 //                hit.result.primaryArtist }
 //            )
 //        }
         this.lifecycleScope.launch {
-            viemodel.getPagingData("the national").collectLatest {
+            viemodel.getPagingData("cocorosie").collectLatest {
                 adapter.submitData(it)
-                adapterArtist.submitData(it.flatMap {
-                    listOf(it.result.primaryArtist).distinct()
-                })
             }
         }
+        this.lifecycleScope.launch {
+            viemodel.getPagingDataOfArtist("cocorosie").collectLatest {
+                adapterArtist.submitData(it.map { it.result.primaryArtist })
+            }
+
+        }
     }
+
+
+//        adapter.addLoadStateListener {
+//            if (it.refresh == LoadState.Loading) {
+//                //show progress
+//            } else {
+//                //hide progress
+//            }
+//        }
 }
