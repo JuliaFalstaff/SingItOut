@@ -35,7 +35,7 @@
         android:id="@+id/lyricsHeaderTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_8dp"
+        android:padding="@dimen/padding_4dp"
         android:text="@string/related_lyrics_search_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
