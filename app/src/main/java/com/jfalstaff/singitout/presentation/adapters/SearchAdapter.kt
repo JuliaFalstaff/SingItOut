@@ -6,20 +6,26 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
-import com.jfalstaff.singitout.databinding.ItemMainBinding
+import com.jfalstaff.singitout.databinding.ItemMainSearchResultBinding
 
-class SearchAdapter: PagingDataAdapter<Hit, SearchAdapter.SearchViewHolder>(DiffUtil()) {
+class SearchAdapter : PagingDataAdapter<Hit, SearchAdapter.SearchViewHolder>(DiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        return SearchViewHolder(ItemMainBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return SearchViewHolder(
+            ItemMainSearchResultBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-
-    inner class SearchViewHolder(val binding: ItemMainBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class SearchViewHolder(private val binding: ItemMainSearchResultBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(search: Hit?) {
             binding.artistNameTextTitle.text = search?.result?.artistNames
             binding.lyricsTitleTextTitle.text = search?.result?.title

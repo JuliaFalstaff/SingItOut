@@ -18,8 +18,8 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="8dp"
+            android:layout_height="?actionBarSize"
+            android:elevation="@dimen/toolbar_elevation"
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.SearchView
@@ -31,12 +31,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:queryHint="@string/hint_search_view" />
-
-
         </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
