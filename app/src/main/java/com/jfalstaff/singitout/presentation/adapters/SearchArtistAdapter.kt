@@ -9,7 +9,9 @@ import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtist
 import com.jfalstaff.singitout.databinding.ItemMainArtistBinding
 
 class SearchArtistAdapter :
-    PagingDataAdapter<PrimaryArtist, SearchArtistAdapter.SearchViewHolder>(DiffUtilArtist()) {
+    PagingDataAdapter<PrimaryArtist, SearchArtistAdapter.SearchViewHolder>(
+        BaseItemDiffCallback<PrimaryArtist>()
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(

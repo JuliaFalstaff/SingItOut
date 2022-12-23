@@ -8,7 +8,9 @@ import com.bumptech.glide.Glide
 import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
 import com.jfalstaff.singitout.databinding.ItemMainSearchResultBinding
 
-class SearchAdapter : PagingDataAdapter<Hit, SearchAdapter.SearchViewHolder>(DiffUtil()) {
+class SearchAdapter : PagingDataAdapter<Hit, SearchAdapter.SearchViewHolder>(
+    BaseItemDiffCallback<Hit>()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(
