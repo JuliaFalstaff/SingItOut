@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
 import com.jfalstaff.singitout.databinding.ItemMainSearchResultBinding
 
@@ -33,6 +34,7 @@ class SearchAdapter : PagingDataAdapter<Hit, SearchAdapter.SearchViewHolder>(
             binding.lyricsTitleTextTitle.text = search?.result?.title
             Glide.with(itemView)
                 .load(search?.result?.headerImageUrl)
+                .placeholder(R.drawable.progress_animation)
                 .into(binding.posterTitle)
         }
     }
