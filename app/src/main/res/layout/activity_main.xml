@@ -7,6 +7,10 @@
     android:orientation="vertical"
     tools:context=".presentation.MainActivity">
 
+    <include
+        android:id="@+id/toolbarLayout"
+        layout="@layout/custom_toolbar" />
+
     <TextView
         android:id="@+id/ArtistHeaderTextView"
         android:layout_width="match_parent"
@@ -41,10 +45,9 @@
 
     <ProgressBar
         android:id="@+id/progressBarSearch"
-        android:layout_gravity="center"
-        android:visibility="visible"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

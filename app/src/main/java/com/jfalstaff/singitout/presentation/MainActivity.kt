@@ -1,13 +1,14 @@
 package com.jfalstaff.singitout.presentation
 
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.widget.SearchView
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import androidx.paging.PagingDataAdapter
 import androidx.paging.map
 import com.jfalstaff.singitout.databinding.ActivityMainBinding
 import com.jfalstaff.singitout.presentation.adapters.SearchAdapter
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private var searchExpression = ""
 
     private lateinit var adapter: SearchAdapter
     private lateinit var adapterArtist: SearchArtistAdapter
@@ -30,7 +32,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initAdapters()
-        getPagingSearchData()
+        binding.toolbarLayout.searchView.setOnQueryTextListener (object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+               searchExpression = query?.trim().toString()
+                getPagingSearchData(searchExpression)
+                Log.d("VVV Submit", searchExpression)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+//                searchExpression = newText?.trim().toString()
+//                Log.d("VVV Change", "$searchExpression")
+                return false
+            }
+
+        })
         addAdaptersStateListeners()
     }
 
@@ -61,14 +77,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getPagingSearchData() {
+    private fun getPagingSearchData(searchExpression: String) {
         this.lifecycleScope.launch {
-            viewModel.getPagingData("cocorosie").collectLatest {
+            viewModel.getPagingData(searchExpression).collectLatest {
                 adapter.submitData(it)
+                Log.d("VVV Paging", "$it")
             }
         }
         this.lifecycleScope.launch {
-            viewModel.getPagingDataOfArtist("cocorosie").collectLatest {
+            viewModel.getPagingDataOfArtist(searchExpression).collectLatest {
                 adapterArtist.submitData(it.map { it.result.primaryArtist })
             }
         }
@@ -82,11 +99,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-//        adapter.addLoadStateListener {
-//            if (it.refresh == LoadState.Loading) {
-//                //show progress
-//            } else {
-//                //hide progress
-//            }
-//        }
 }

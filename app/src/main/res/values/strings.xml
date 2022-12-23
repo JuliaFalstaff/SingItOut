@@ -2,4 +2,6 @@
     <string name="app_name">Sing it out</string>
     <string name="related_artists_search_header">Related Artists</string>
     <string name="related_lyrics_search_header">Related Lyrics</string>
+    <string name="search_menu">Search</string>
+    <string name="hint_search_view">Search Artist/Song</string>
 </resources>
