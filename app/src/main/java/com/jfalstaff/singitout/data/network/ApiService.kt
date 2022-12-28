@@ -1,7 +1,10 @@
 package com.jfalstaff.singitout.data.network
 
+import com.jfalstaff.singitout.data.network.dto.artists.Artist
+import com.jfalstaff.singitout.data.network.dto.artists.ResponseArtist
 import com.jfalstaff.singitout.data.network.dto.searchDto.ResponseServer
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -11,4 +14,14 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("per_page") per_page: Int
     ): ResponseServer
+
+    @GET("/artists/{id}")
+    suspend fun getArtistInfo(
+        @Path("id") id: String,
+        @Query("text_format") text_format: String = PLAIN_TEXT_FORMAT_RESPONSE
+    ): ResponseArtist
+
+    companion object {
+        private const val PLAIN_TEXT_FORMAT_RESPONSE = "plain"
+    }
 }

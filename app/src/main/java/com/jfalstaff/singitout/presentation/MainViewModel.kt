@@ -25,36 +25,6 @@ class MainViewModel() : ViewModel() {
     private val getSearchResultUseCase =
         GetSearchResultUseCase(RepositoryImpl(ApiFactory.apiService))
 
-    private var _searchResult: MutableLiveData<Hit> = MutableLiveData()
-    val searchResult: LiveData<Hit> get() = _searchResult
-
-//    fun loadSearchResult(search: String) {
-//        viewModelScope.launch {
-//             getSearchResultUseCase.invoke(search)
-//                 .catch { error ->
-//                     Log.d("VVV", error.stackTraceToString())
-//                 }
-//                .collect { response ->
-//                    _searchResult.value = response
-//                    Log.d("VVV", response.toString())
-//                }
-//
-//        }
-//    }
-
-//    fun loadSearchResult(search: String) {
-//        viewModelScope.launch {
-//            val response = getSearchResultUseCase(search)
-//                .catch {error ->
-//                     Log.d("VVV", error.stackTraceToString())  }
-//                .collectLatest {
-//                    it.map {
-//                        _searchResult.postValue(it)
-//                    }
-//                }
-//        }
-//    }
-
     suspend fun getPagingData(search: String) =
         getSearchResultUseCase(search).cachedIn(viewModelScope)
 

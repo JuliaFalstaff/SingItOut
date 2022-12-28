@@ -2,6 +2,7 @@ package com.jfalstaff.singitout.data.network
 
 import com.jfalstaff.singitout.BuildConfig
 import okhttp3.*
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -21,6 +22,7 @@ object ApiFactory {
     private val okHttpClient = OkHttpClient()
         .newBuilder()
         .addInterceptor(requestInterceptor)
+        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .build()
 
     private val retrofit = Retrofit.Builder()
