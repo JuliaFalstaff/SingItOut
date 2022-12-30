@@ -1,24 +1,16 @@
 package com.jfalstaff.singitout.presentation
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.filter
-import androidx.paging.map
 import com.jfalstaff.singitout.data.network.ApiFactory
 import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
-import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtist
 import com.jfalstaff.singitout.data.repository.RepositoryImpl
 import com.jfalstaff.singitout.domain.GetSearchResultUseCase
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 
 class MainViewModel() : ViewModel() {
 

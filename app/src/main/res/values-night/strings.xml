@@ -4,4 +4,7 @@
     <string name="related_lyrics_search_header">Related Lyrics</string>
     <string name="search_menu">Search</string>
     <string name="hint_search_view">Search Artist/Song</string>
+    <string name="facebookLabel">facebook</string>
+    <string name="instagramLabel">Instagram</string>
+    <string name="twitterLabel">twitter</string>
 </resources>

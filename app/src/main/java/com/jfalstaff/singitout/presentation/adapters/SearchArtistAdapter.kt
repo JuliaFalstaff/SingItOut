@@ -14,6 +14,8 @@ class SearchArtistAdapter :
         BaseItemDiffCallback<PrimaryArtist>()
     ) {
 
+    var onItemArtistClickListener: ((PrimaryArtist?) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(
             ItemMainArtistBinding.inflate(
@@ -37,6 +39,9 @@ class SearchArtistAdapter :
                 .circleCrop()
                 .placeholder(R.drawable.progress_animation)
                 .into(binding.imageArtist)
+            itemView.setOnClickListener {
+                onItemArtistClickListener?.invoke(artist)
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiFactory {
 
     private const val BASE_URL = "https://api.genius.com/"
+    private const val BASE_MUSIC_URL = "https://genius.com/api/"
     private const val tokenGenius = BuildConfig.TOKEN_GENIUS
 
     private val requestInterceptor = Interceptor { chain ->
@@ -31,6 +32,22 @@ object ApiFactory {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val apiService: ApiService = retrofit.create(ApiService::class.java)
+    private val retrofitMusic = Retrofit.Builder()
+        .client(createOkHttpClient())
+        .baseUrl(BASE_MUSIC_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
+    private fun createOkHttpClient(): OkHttpClient {
+        val httpClient = OkHttpClient.Builder()
+        httpClient.addInterceptor(
+            HttpLoggingInterceptor().setLevel(
+                HttpLoggingInterceptor.Level.BODY
+            )
+        )
+        return httpClient.build()
+    }
+
+    val apiService: ApiService = retrofit.create(ApiService::class.java)
+    val apiMusicService: ApiMusicService = retrofitMusic.create(ApiMusicService::class.java)
 }

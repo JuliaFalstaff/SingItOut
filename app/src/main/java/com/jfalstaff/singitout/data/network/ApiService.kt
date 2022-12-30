@@ -1,6 +1,5 @@
 package com.jfalstaff.singitout.data.network
 
-import com.jfalstaff.singitout.data.network.dto.artists.Artist
 import com.jfalstaff.singitout.data.network.dto.artists.ResponseArtist
 import com.jfalstaff.singitout.data.network.dto.searchDto.ResponseServer
 import retrofit2.http.GET
@@ -17,7 +16,7 @@ interface ApiService {
 
     @GET("/artists/{id}")
     suspend fun getArtistInfo(
-        @Path("id") id: String,
+        @Path("id") id: Int,
         @Query("text_format") text_format: String = PLAIN_TEXT_FORMAT_RESPONSE
     ): ResponseArtist
 
