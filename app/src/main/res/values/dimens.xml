@@ -10,4 +10,5 @@
     <dimen name="margin_8dp">8dp</dimen>
     <dimen name="item_album_title">12sp</dimen>
     <dimen name="item_album_year">12sp</dimen>
+    <dimen name="background_image_height">150dp</dimen>
 </resources>

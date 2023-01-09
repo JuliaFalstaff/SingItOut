@@ -111,6 +111,7 @@ class MainFragment : Fragment() {
         adapterArtist.onItemArtistClickListener = {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.container, ArtistInfoFragment.newInstance(it?.id ?: 0))
+                .addToBackStack(null)
                 .commit()
         }
     }
