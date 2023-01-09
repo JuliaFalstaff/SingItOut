@@ -13,6 +13,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.paging.map
 import com.jfalstaff.singitout.R
+import com.jfalstaff.singitout.data.network.ApiFactory
+import com.jfalstaff.singitout.data.repository.RepositoryImpl
 import com.jfalstaff.singitout.databinding.FragmentMainBinding
 import com.jfalstaff.singitout.presentation.adapters.SearchAdapter
 import com.jfalstaff.singitout.presentation.adapters.SearchArtistAdapter

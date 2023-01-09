@@ -11,4 +11,6 @@
     <dimen name="item_album_title">12sp</dimen>
     <dimen name="item_album_year">12sp</dimen>
     <dimen name="background_image_height">150dp</dimen>
+    <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="item_album_track">14sp</dimen>
 </resources>

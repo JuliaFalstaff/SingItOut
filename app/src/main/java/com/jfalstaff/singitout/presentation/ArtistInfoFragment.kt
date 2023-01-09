@@ -58,6 +58,16 @@ class ArtistInfoFragment: Fragment() {
     private fun renderAlbumData(list: List<Albums>?) {
         adapter?.submitList(list)
         binding.progressBar.visibility = View.INVISIBLE
+        setAlbumListener()
+    }
+
+    private fun setAlbumListener() {
+        adapter?.onAlbumItemClickListener = {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.container, AlbumTracksFragment.newInstance(it))
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     private fun renderArtistInfo(artist: Artist?) = with(binding) {

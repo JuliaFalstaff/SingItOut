@@ -7,4 +7,5 @@
     <string name="facebookLabel">facebook</string>
     <string name="instagramLabel">Instagram</string>
     <string name="twitterLabel">twitter</string>
+    <string name="tracks_header">Tracks</string>
 </resources>

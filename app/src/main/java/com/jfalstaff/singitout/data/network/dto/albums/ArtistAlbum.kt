@@ -1,9 +1,11 @@
 package com.jfalstaff.singitout.data.network.dto.albums
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-
+@Parcelize
 data class ArtistAlbum (
     @SerializedName("_type")
     var type: String? = "",
@@ -37,5 +39,5 @@ data class ArtistAlbum (
 
     @SerializedName("url")
     var url: String? = "",
-)
+): Parcelable
 

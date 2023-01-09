@@ -13,6 +13,8 @@ import com.jfalstaff.singitout.databinding.ItemAlbumBinding
 class AlbumsAdapter :
     ListAdapter<Albums, AlbumsAdapter.AlbumViewHolder>(BaseItemDiffCallback<Albums>()) {
 
+    var onAlbumItemClickListener: ((Albums) -> Unit)? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -32,13 +34,16 @@ class AlbumsAdapter :
 
     inner class AlbumViewHolder(private val binding: ItemAlbumBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(album: Albums?) {
-            binding.albumTitleTextView.text = album?.fullTitle
-            binding.albumYearTextView.text = album?.releaseDateComponents?.year.toString()
+        fun bind(album: Albums) {
+            binding.albumTitleTextView.text = album.fullTitle
+            binding.albumYearTextView.text = album.releaseDateComponents?.year.toString()
             Glide.with(itemView)
-                .load(album?.coverArtUrl)
+                .load(album.coverArtUrl)
                 .placeholder(R.drawable.progress_animation)
                 .into(binding.albumCoverImageView)
+            itemView.setOnClickListener {
+                onAlbumItemClickListener?.invoke(album)
+            }
         }
     }
 }

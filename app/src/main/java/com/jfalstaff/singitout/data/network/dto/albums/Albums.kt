@@ -1,8 +1,10 @@
 package com.jfalstaff.singitout.data.network.dto.albums
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
-
+@Parcelize
 data class Albums(
     @SerializedName("_type")
     val type: String? = "",
@@ -15,7 +17,7 @@ data class Albums(
     @SerializedName("full_title")
     val fullTitle: String? = "",
     @SerializedName("id")
-    val id: Int? = 0,
+    val id: Int = 0,
     @SerializedName("name")
     val name: String? = "",
     @SerializedName("name_with_artist")
@@ -26,4 +28,4 @@ data class Albums(
     val url: String? = "",
     @SerializedName("artist")
     val artist: ArtistAlbum? = ArtistAlbum()
-)
+): Parcelable

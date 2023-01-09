@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.jfalstaff.singitout.data.network.ApiService
 import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
+import com.jfalstaff.singitout.data.network.dto.tracks.Track
 import com.jfalstaff.singitout.data.network.paging.SearchResponsePagingSource
 import com.jfalstaff.singitout.domain.IRepository
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +30,11 @@ class RepositoryImpl(private val apiService: ApiService) : IRepository {
     override suspend fun getArtistInfo(id: Int) = flow {
         val artistInfo = apiService.getArtistInfo(id)
         emit(artistInfo.response.artist)
+    }.flowOn(Dispatchers.IO)
+
+    override suspend fun getAlbumTracks(id: Int): Flow<List<Track>> = flow {
+        val trackList = apiService.getAlbumTracks(id)
+        emit(trackList.response.tracks ?: listOf())
     }.flowOn(Dispatchers.IO)
 
     companion object {
