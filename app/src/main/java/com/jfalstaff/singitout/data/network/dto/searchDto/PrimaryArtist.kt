@@ -1,7 +1,10 @@
 package com.jfalstaff.singitout.data.network.dto.searchDto
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class PrimaryArtist(
     @SerializedName("api_path")
     val apiPath: String,
@@ -19,4 +22,4 @@ data class PrimaryArtist(
     val name: String,
     @SerializedName("url")
     val url: String
-)
+): Parcelable

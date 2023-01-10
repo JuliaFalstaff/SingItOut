@@ -33,7 +33,7 @@ class AlbumTracksFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val album = arguments?.getParcelable(ALBUM_KEY) ?: Albums()
-        initAdapter()
+        initAdapter(album)
         initViewModel(album)
         renderAlbumInfo(album)
     }
@@ -54,13 +54,13 @@ class AlbumTracksFragment : Fragment() {
         }
     }
 
-    private fun initAdapter() {
+    private fun initAdapter(album: Albums) {
         adapter = AlbumTracksAdapter()
         binding.recyclerViewAlbumTracks.adapter = adapter
         adapter?.onTrackItemClickListener = {
             requireActivity().supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.container, SongLyricsFragment.newInstance(it.song?.id ?: 0))
+                .replace(R.id.container, SongLyricsFragment.newInstance(it, album))
                 .addToBackStack(null)
                 .commit()
         }

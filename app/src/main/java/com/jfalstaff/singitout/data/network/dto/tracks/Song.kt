@@ -1,10 +1,12 @@
 package com.jfalstaff.singitout.data.network.dto.tracks
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtist
 import com.jfalstaff.singitout.data.network.dto.searchDto.Stats
+import kotlinx.parcelize.Parcelize
 
-
+@Parcelize
 data class Song (
     @SerializedName("annotation_count")
     val annotationCount: Int? = 0,
@@ -77,5 +79,5 @@ data class Song (
 
     @SerializedName("primary_artist")
     val primaryArtist: PrimaryArtist? = null
-)
+): Parcelable
 
