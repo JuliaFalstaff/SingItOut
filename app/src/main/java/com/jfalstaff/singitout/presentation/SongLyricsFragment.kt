@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.jfalstaff.singitout.R
-import com.jfalstaff.singitout.data.network.dto.albums.Albums
-import com.jfalstaff.singitout.data.network.dto.tracks.Track
+import com.jfalstaff.singitout.data.network.dto.song.Song
 import com.jfalstaff.singitout.databinding.FragmentLyricBinding
 
 class SongLyricsFragment : Fragment() {
@@ -31,25 +30,29 @@ class SongLyricsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val song = arguments?.getParcelable(KEY_SONG) ?: Track()
-        val album = arguments?.getParcelable(KEY_ALBUM_SONG) ?: Albums()
-        initViewModel(song.song?.id ?: 0)
-        renderSongInfo(album, song)
+        val songId = arguments?.getInt(KEY_ID_SONG) ?: 0
+        initViewModel(songId)
     }
 
-    private fun renderSongInfo(album: Albums, song: Track) {
+    private fun renderSongInfo(song: Song) {
         Glide.with(requireActivity())
-            .load(album.coverArtUrl)
+            .load(song.album?.coverArtUrl)
             .placeholder(R.drawable.progress_animation)
             .into(binding.albumCoverForLyricsImageView)
-        binding.songTitleTextView.text = song.song?.title
-        binding.artistNameTextView.text = song.song?.primaryArtist?.name
+        binding.songTitleTextView.text = song.title
+        binding.artistNameTextView.text = song.primaryArtist?.name
+        binding.albumTitleTextView.text = song.album?.name
+        binding.releaseDateTextView.text = song.releaseDate
     }
 
     private fun initViewModel(id: Int) {
         viewModel.loadSongLyrics(id)
+        viewModel.loadSongInfo(id)
         viewModel.lyrics.observe(viewLifecycleOwner) {
             binding.lyricTextView.text = it.lyrics?.body?.plain ?: "no data lyrics. Empty?"
+        }
+        viewModel.songInfo.observe(viewLifecycleOwner) {
+            renderSongInfo(it)
         }
     }
 
@@ -59,12 +62,10 @@ class SongLyricsFragment : Fragment() {
     }
 
     companion object {
-        private const val KEY_SONG = "song_data"
-        private const val KEY_ALBUM_SONG = "album_song_data"
-        fun newInstance(track: Track, album: Albums)= SongLyricsFragment().apply {
+        private const val KEY_ID_SONG = "id_song"
+        fun newInstance(id: Int)= SongLyricsFragment().apply {
             arguments = Bundle().apply {
-                putParcelable(KEY_SONG, track)
-                putParcelable(KEY_ALBUM_SONG, album)
+                putInt(KEY_ID_SONG, id)
             }
         }
     }

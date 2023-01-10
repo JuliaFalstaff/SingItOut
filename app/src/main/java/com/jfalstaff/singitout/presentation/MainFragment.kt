@@ -110,9 +110,19 @@ class MainFragment : Fragment() {
         binding.recyclerSearch.adapter = adapter
         adapterArtist = SearchArtistAdapter()
         binding.horizontalRV.adapter = adapterArtist
+        setAdaptersListeners()
+    }
+
+    private fun setAdaptersListeners() {
         adapterArtist.onItemArtistClickListener = {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.container, ArtistInfoFragment.newInstance(it?.id ?: 0))
+                .addToBackStack(null)
+                .commit()
+        }
+        adapter.onItemHitClickListener = {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.container, SongLyricsFragment.newInstance(it?.result?.id ?: 0))
                 .addToBackStack(null)
                 .commit()
         }

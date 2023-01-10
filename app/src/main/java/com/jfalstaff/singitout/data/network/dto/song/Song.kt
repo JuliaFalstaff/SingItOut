@@ -1,5 +1,6 @@
 package com.jfalstaff.singitout.data.network.dto.song
 
+import android.os.Parcelable
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName
@@ -7,8 +8,9 @@ import com.google.gson.annotations.SerializedName
 import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtist
 
 import com.jfalstaff.singitout.data.network.dto.searchDto.Stats
+import kotlinx.parcelize.Parcelize
 
-
+@Parcelize
 data class Song (
     @SerializedName("annotation_count")
     @Expose
@@ -126,9 +128,9 @@ data class Song (
 //    @Expose
 //    var currentUserMetadata: CurrentUserMetadata? = null,
 //
-//    @SerializedName("album")
-//    @Expose
-//    var album: Album? = null,
+    @SerializedName("album")
+    @Expose
+    var album: Album? = null,
 //
 //    @SerializedName("custom_performances")
 //    @Expose
@@ -185,5 +187,5 @@ data class Song (
 //    @SerializedName("writer_artists")
 //    @Expose
 //    var writerArtists: List<WriterArtist>? = null,
-)
+): Parcelable
 

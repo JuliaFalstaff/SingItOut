@@ -2,6 +2,7 @@ package com.jfalstaff.singitout.data.network
 
 import com.jfalstaff.singitout.data.network.dto.artists.ResponseArtist
 import com.jfalstaff.singitout.data.network.dto.searchDto.ResponseServer
+import com.jfalstaff.singitout.data.network.dto.song.ResponseSong
 import com.jfalstaff.singitout.data.network.dto.tracks.ResponseAlbumTracks
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -25,6 +26,11 @@ interface ApiService {
     suspend fun getAlbumTracks(
         @Path("id") id: Int
     ): ResponseAlbumTracks
+
+    @GET("/songs/{id}")
+    suspend fun getSongInfo(
+        @Path("id") id: Int
+    ): ResponseSong
 
     companion object {
         private const val PLAIN_TEXT_FORMAT_RESPONSE = "plain"

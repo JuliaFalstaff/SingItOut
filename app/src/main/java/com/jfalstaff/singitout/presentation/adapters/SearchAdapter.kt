@@ -7,11 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
+import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtist
 import com.jfalstaff.singitout.databinding.ItemMainSearchResultBinding
 
 class SearchAdapter : PagingDataAdapter<Hit, SearchAdapter.SearchViewHolder>(
     BaseItemDiffCallback<Hit>()
 ) {
+
+    var onItemHitClickListener: ((Hit?) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(
@@ -36,6 +39,9 @@ class SearchAdapter : PagingDataAdapter<Hit, SearchAdapter.SearchViewHolder>(
                 .load(search?.result?.headerImageUrl)
                 .placeholder(R.drawable.progress_animation)
                 .into(binding.posterTitle)
+            itemView.setOnClickListener {
+                onItemHitClickListener?.invoke(search)
+            }
         }
     }
 }
