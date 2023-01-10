@@ -57,6 +57,13 @@ class AlbumTracksFragment : Fragment() {
     private fun initAdapter() {
         adapter = AlbumTracksAdapter()
         binding.recyclerViewAlbumTracks.adapter = adapter
+        adapter?.onTrackItemClickListener = {
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container, SongLyricsFragment.newInstance(it.song?.id ?: 0))
+                .addToBackStack(null)
+                .commit()
+        }
     }
 
     override fun onDestroy() {

@@ -25,6 +25,13 @@ android {
         it.buildConfigField "String", "TOKEN_GENIUS", tokenAuth
     }
 
+    buildTypes.each {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("tokenRapid.properties").newDataInputStream())
+        def tokenRapidAuth = properties.getProperty("TOKEN_RAPID_GENIUS", "")
+        it.buildConfigField "String", "TOKEN_RAPID_GENIUS", tokenRapidAuth
+    }
+
     buildTypes {
         release {
             minifyEnabled false

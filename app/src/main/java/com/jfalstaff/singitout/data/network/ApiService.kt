@@ -21,7 +21,6 @@ interface ApiService {
         @Query("text_format") text_format: String = PLAIN_TEXT_FORMAT_RESPONSE
     ): ResponseArtist
 
-
     @GET("/albums/{id}/tracks")
     suspend fun getAlbumTracks(
         @Path("id") id: Int

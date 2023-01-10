@@ -9,6 +9,9 @@ import com.jfalstaff.singitout.databinding.ItemAlbumTrackBinding
 
 class AlbumTracksAdapter :
     ListAdapter<Track, AlbumTracksAdapter.TracksViewHolder>(BaseItemDiffCallback<Track>()) {
+
+    var onTrackItemClickListener: ((Track) -> Unit)? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -31,6 +34,9 @@ class AlbumTracksAdapter :
         fun bind(track: Track) {
             binding.numberOfTrackInAlbum.text = track.number.toString()
             binding.titleOfSongTextView.text = track.song?.title
+            itemView.setOnClickListener {
+                onTrackItemClickListener?.invoke(track)
+            }
         }
     }
 }
