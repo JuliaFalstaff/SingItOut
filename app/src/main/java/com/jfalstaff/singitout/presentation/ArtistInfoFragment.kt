@@ -1,35 +1,23 @@
 package com.jfalstaff.singitout.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.albums.Albums
 import com.jfalstaff.singitout.data.network.dto.artists.Artist
 import com.jfalstaff.singitout.databinding.FragmentArtistInfoBinding
 import com.jfalstaff.singitout.presentation.adapters.AlbumsAdapter
+import com.jfalstaff.singitout.presentation.core.BaseFragment
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
 
-class ArtistInfoFragment : Fragment() {
+class ArtistInfoFragment :
+    BaseFragment<FragmentArtistInfoBinding>(FragmentArtistInfoBinding::inflate) {
 
-    private var _binding: FragmentArtistInfoBinding? = null
-    private val binding get() = _binding!!
     private val viewModel by lazy {
         ViewModelProvider(this)[ArtistInfoViewModel::class.java]
     }
     private var adapter: AlbumsAdapter? = null
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentArtistInfoBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -78,14 +66,7 @@ class ArtistInfoFragment : Fragment() {
         twitterNameTextView.text = artist?.twitterName
         GlideFactory.loadCircleCrop(requireView(), artist?.imageUrl, artistPosterImageView)
         GlideFactory.load(requireView(), artist?.headerImageUrl, artistBackgroundPosterImageView)
-
     }
-
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
-    }
-
 
     companion object {
         private const val ID_ARTIST_KEY = "artist_id"

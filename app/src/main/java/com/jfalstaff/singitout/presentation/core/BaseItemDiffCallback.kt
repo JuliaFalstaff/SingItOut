@@ -1,4 +1,4 @@
-package com.jfalstaff.singitout.presentation.adapters
+package com.jfalstaff.singitout.presentation.core
 
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.DiffUtil

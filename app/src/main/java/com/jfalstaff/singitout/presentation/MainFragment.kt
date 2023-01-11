@@ -2,12 +2,9 @@ package com.jfalstaff.singitout.presentation
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
@@ -16,27 +13,17 @@ import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.databinding.FragmentMainBinding
 import com.jfalstaff.singitout.presentation.adapters.SearchAdapter
 import com.jfalstaff.singitout.presentation.adapters.SearchArtistAdapter
+import com.jfalstaff.singitout.presentation.core.BaseFragment
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 
-    private var _binding: FragmentMainBinding? = null
-    private val binding get() = _binding!!
     private var searchExpression = ""
     private lateinit var adapter: SearchAdapter
     private lateinit var adapterArtist: SearchArtistAdapter
     private val viewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

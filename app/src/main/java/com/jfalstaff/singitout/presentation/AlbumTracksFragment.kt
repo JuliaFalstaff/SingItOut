@@ -1,33 +1,20 @@
 package com.jfalstaff.singitout.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.albums.Albums
 import com.jfalstaff.singitout.databinding.FragmentAlbumTracksBinding
 import com.jfalstaff.singitout.presentation.adapters.AlbumTracksAdapter
+import com.jfalstaff.singitout.presentation.core.BaseFragment
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
 
-class AlbumTracksFragment : Fragment() {
-
-    private var _binding: FragmentAlbumTracksBinding? = null
-    private val binding get() = _binding!!
+class AlbumTracksFragment :
+    BaseFragment<FragmentAlbumTracksBinding>(FragmentAlbumTracksBinding::inflate) {
     private var adapter: AlbumTracksAdapter? = null
     private val viewModel by lazy {
         ViewModelProvider(requireActivity())[AlbumTrackViewModel::class.java]
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentAlbumTracksBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,11 +48,6 @@ class AlbumTracksFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
-    }
-
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
     }
 
     companion object {

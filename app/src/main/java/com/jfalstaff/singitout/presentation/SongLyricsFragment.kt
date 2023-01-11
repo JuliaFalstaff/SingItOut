@@ -1,31 +1,18 @@
 package com.jfalstaff.singitout.presentation
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.song.Song
 import com.jfalstaff.singitout.databinding.FragmentLyricBinding
+import com.jfalstaff.singitout.presentation.core.BaseFragment
 
-class SongLyricsFragment : Fragment() {
+class SongLyricsFragment : BaseFragment<FragmentLyricBinding>(FragmentLyricBinding::inflate) {
 
-    private var _binding: FragmentLyricBinding? = null
-    private val binding get() = _binding!!
     private val viewModel by lazy {
         ViewModelProvider(requireActivity())[SongLyricsViewModel::class.java]
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentLyricBinding.inflate(inflater, container, false)
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,11 +41,6 @@ class SongLyricsFragment : Fragment() {
         viewModel.songInfo.observe(viewLifecycleOwner) {
             renderSongInfo(it)
         }
-    }
-
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
     }
 
     companion object {

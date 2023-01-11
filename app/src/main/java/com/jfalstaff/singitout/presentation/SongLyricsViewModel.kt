@@ -10,7 +10,7 @@ import com.jfalstaff.singitout.data.network.dto.lyrics.Lyrics
 import com.jfalstaff.singitout.data.network.dto.song.Song
 import com.jfalstaff.singitout.data.repository.RepositoryImpl
 import com.jfalstaff.singitout.data.repository.RepositoryLyricsImpl
-import com.jfalstaff.singitout.domain.GetSongInfo
+import com.jfalstaff.singitout.domain.GetSongInfoUseCase
 import com.jfalstaff.singitout.domain.GetSongLyricUseCase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ class SongLyricsViewModel : ViewModel() {
 
     private val getSongLyricUseCase =
         GetSongLyricUseCase(RepositoryLyricsImpl(ApiFactory.apiRapidLyricsService))
-    private val getSongInfo = GetSongInfo(RepositoryImpl(ApiFactory.apiService))
+    private val getSongInfo = GetSongInfoUseCase(RepositoryImpl(ApiFactory.apiService))
 
     private var _lyrics = MutableLiveData<Lyrics>()
     val lyrics: LiveData<Lyrics> = _lyrics

@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtist
 import com.jfalstaff.singitout.databinding.ItemMainArtistBinding
+import com.jfalstaff.singitout.presentation.core.BaseItemDiffCallback
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
 
 class SearchArtistAdapter :
