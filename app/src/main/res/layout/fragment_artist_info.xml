@@ -44,16 +44,17 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_8dp"
             android:textStyle="bold"
+            android:textSize="@dimen/artist_name_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/artistPosterImageView"
             app:layout_constraintTop_toBottomOf="@id/artistBackgroundPosterImageView"
             tools:text="@tools:sample/full_names" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/facebookLabelTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/facebookLabel"
+            android:src="@drawable/ic_facebook"
             app:layout_constraintStart_toEndOf="@+id/artistPosterImageView"
             app:layout_constraintTop_toBottomOf="@id/artistName" />
 
@@ -62,17 +63,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_4dp"
-            android:text="@string/facebookLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/facebookLabelTextView"
             app:layout_constraintTop_toBottomOf="@id/artistName" />
 
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/instagramLabelTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/instagramLabel"
+            android:src="@drawable/ic_instagram"
             app:layout_constraintStart_toEndOf="@+id/artistPosterImageView"
             app:layout_constraintTop_toBottomOf="@id/facebookLabelTextView" />
 
@@ -82,16 +82,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_4dp"
-            android:text="@string/instagramLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/instagramLabelTextView"
             app:layout_constraintTop_toBottomOf="@id/facebookLabelTextView" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/twitterLabelTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/twitterLabel"
+            android:src="@drawable/ic_twitter"
             app:layout_constraintStart_toEndOf="@+id/artistPosterImageView"
             app:layout_constraintTop_toBottomOf="@id/instagramLabelTextView" />
 
@@ -100,7 +99,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/padding_4dp"
-            android:text="@string/twitterLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/twitterLabelTextView"
             app:layout_constraintTop_toBottomOf="@id/instagramLabelTextView" />
@@ -113,7 +111,7 @@
             android:padding="@dimen/padding_4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/artistPosterImageView"
+            app:layout_constraintTop_toBottomOf="@+id/twitterLabelTextView"
             tools:text="@tools:sample/lorem" />
 
         <TextView

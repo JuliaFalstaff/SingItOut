@@ -48,6 +48,11 @@ class MainFragment : Fragment() {
         addAdaptersStateListeners()
     }
 
+    override fun onResume() {
+        super.onResume()
+        getPagingSearchData(searchExpression)
+    }
+
     private fun initSearchToolbar() {
         binding.toolbarLayout.searchView.setOnQueryTextListener(object :
             SearchView.OnQueryTextListener {

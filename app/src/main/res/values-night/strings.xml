@@ -8,4 +8,6 @@
     <string name="instagramLabel">Instagram</string>
     <string name="twitterLabel">twitter</string>
     <string name="tracks_header">Tracks</string>
+    <string name="release_date_label">Release Date:</string>
+    <string name="album_title_label">Album:</string>
 </resources>
