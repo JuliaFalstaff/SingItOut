@@ -4,11 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
-import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtist
 import com.jfalstaff.singitout.databinding.ItemMainSearchResultBinding
+import com.jfalstaff.singitout.presentation.glide.GlideFactory
 
 class SearchAdapter : PagingDataAdapter<Hit, SearchAdapter.SearchViewHolder>(
     BaseItemDiffCallback<Hit>()
@@ -35,10 +33,11 @@ class SearchAdapter : PagingDataAdapter<Hit, SearchAdapter.SearchViewHolder>(
         fun bind(search: Hit?) {
             binding.artistNameTextTitle.text = search?.result?.artistNames
             binding.lyricsTitleTextTitle.text = search?.result?.title
-            Glide.with(itemView)
-                .load(search?.result?.headerImageUrl)
-                .placeholder(R.drawable.progress_animation)
-                .into(binding.posterTitle)
+            GlideFactory.load(
+                viewContainer = itemView,
+                url = search?.result?.headerImageUrl,
+                imageView = binding.posterTitle
+            )
             itemView.setOnClickListener {
                 onItemHitClickListener?.invoke(search)
             }

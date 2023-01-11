@@ -4,10 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtist
 import com.jfalstaff.singitout.databinding.ItemMainArtistBinding
+import com.jfalstaff.singitout.presentation.glide.GlideFactory
 
 class SearchArtistAdapter :
     PagingDataAdapter<PrimaryArtist, SearchArtistAdapter.SearchViewHolder>(
@@ -34,11 +33,7 @@ class SearchArtistAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(artist: PrimaryArtist?) {
             binding.artistNameTextTitle.text = artist?.name
-            Glide.with(itemView)
-                .load(artist?.imageUrl)
-                .circleCrop()
-                .placeholder(R.drawable.progress_animation)
-                .into(binding.imageArtist)
+            GlideFactory.loadCircleCrop(itemView, artist?.imageUrl, binding.imageArtist)
             itemView.setOnClickListener {
                 onItemArtistClickListener?.invoke(artist)
             }

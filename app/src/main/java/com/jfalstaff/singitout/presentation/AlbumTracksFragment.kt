@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
 import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.albums.Albums
 import com.jfalstaff.singitout.databinding.FragmentAlbumTracksBinding
 import com.jfalstaff.singitout.presentation.adapters.AlbumTracksAdapter
+import com.jfalstaff.singitout.presentation.glide.GlideFactory
 
 class AlbumTracksFragment : Fragment() {
 
@@ -41,10 +41,7 @@ class AlbumTracksFragment : Fragment() {
     private fun renderAlbumInfo(album: Albums) {
         binding.albumTitleTextView.text = album.fullTitle
         binding.releaseAlbumDateTextView.text = album.releaseDateComponents.toString()
-        Glide.with(requireActivity())
-            .load(album.coverArtUrl)
-            .placeholder(R.drawable.progress_animation)
-            .into(binding.albumCoverImageView)
+        GlideFactory.load(requireView(), album.coverArtUrl, binding.albumCoverImageView)
     }
 
     private fun initViewModel(album: Albums) {
@@ -73,7 +70,7 @@ class AlbumTracksFragment : Fragment() {
 
     companion object {
         private const val ALBUM_KEY = "album"
-        fun newInstance(album: Albums)= AlbumTracksFragment().apply {
+        fun newInstance(album: Albums) = AlbumTracksFragment().apply {
             arguments = Bundle().apply {
                 putParcelable(ALBUM_KEY, album)
             }

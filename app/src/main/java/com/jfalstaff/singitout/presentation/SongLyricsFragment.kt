@@ -63,7 +63,7 @@ class SongLyricsFragment : Fragment() {
 
     companion object {
         private const val KEY_ID_SONG = "id_song"
-        fun newInstance(id: Int)= SongLyricsFragment().apply {
+        fun newInstance(id: Int) = SongLyricsFragment().apply {
             arguments = Bundle().apply {
                 putInt(KEY_ID_SONG, id)
             }

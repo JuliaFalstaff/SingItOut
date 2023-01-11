@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
 import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.albums.Albums
 import com.jfalstaff.singitout.data.network.dto.artists.Artist
 import com.jfalstaff.singitout.databinding.FragmentArtistInfoBinding
 import com.jfalstaff.singitout.presentation.adapters.AlbumsAdapter
+import com.jfalstaff.singitout.presentation.glide.GlideFactory
 
-class ArtistInfoFragment: Fragment() {
+class ArtistInfoFragment : Fragment() {
 
     private var _binding: FragmentArtistInfoBinding? = null
     private val binding get() = _binding!!
@@ -76,15 +76,8 @@ class ArtistInfoFragment: Fragment() {
         facebookNameTextView.text = artist?.facebookName
         instagramNameTextView.text = artist?.instagramName
         twitterNameTextView.text = artist?.twitterName
-        Glide.with(requireActivity())
-            .load(artist?.imageUrl)
-            .circleCrop()
-            .placeholder(R.drawable.progress_animation)
-            .into(artistPosterImageView)
-
-        Glide.with(requireActivity())
-            .load(artist?.headerImageUrl)
-            .into(artistBackgroundPosterImageView)
+        GlideFactory.loadCircleCrop(requireView(), artist?.imageUrl, artistPosterImageView)
+        GlideFactory.load(requireView(), artist?.headerImageUrl, artistBackgroundPosterImageView)
 
     }
 

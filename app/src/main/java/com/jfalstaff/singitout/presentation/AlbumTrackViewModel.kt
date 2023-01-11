@@ -12,7 +12,7 @@ import com.jfalstaff.singitout.domain.GetAlbumTracksUseCase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
-class AlbumTrackViewModel: ViewModel() {
+class AlbumTrackViewModel : ViewModel() {
 
     private val getAlbumTracksUseCase = GetAlbumTracksUseCase(RepositoryImpl(ApiFactory.apiService))
     private var _tracks = MutableLiveData<List<Track>>()

@@ -4,11 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.albums.Albums
-import com.jfalstaff.singitout.data.network.dto.albums.ArtistAlbum
 import com.jfalstaff.singitout.databinding.ItemAlbumBinding
+import com.jfalstaff.singitout.presentation.glide.GlideFactory
 
 class AlbumsAdapter :
     ListAdapter<Albums, AlbumsAdapter.AlbumViewHolder>(BaseItemDiffCallback<Albums>()) {
@@ -37,10 +35,11 @@ class AlbumsAdapter :
         fun bind(album: Albums) {
             binding.albumTitleTextView.text = album.fullTitle
             binding.albumYearTextView.text = album.releaseDateComponents?.year.toString()
-            Glide.with(itemView)
-                .load(album.coverArtUrl)
-                .placeholder(R.drawable.progress_animation)
-                .into(binding.albumCoverImageView)
+            GlideFactory.load(
+                viewContainer = itemView,
+                url = album.coverArtUrl,
+                imageView = binding.albumCoverImageView
+            )
             itemView.setOnClickListener {
                 onAlbumItemClickListener?.invoke(album)
             }

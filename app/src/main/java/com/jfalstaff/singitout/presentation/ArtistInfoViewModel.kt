@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jfalstaff.singitout.data.network.ApiFactory
 import com.jfalstaff.singitout.data.network.dto.albums.Albums
-import com.jfalstaff.singitout.data.network.dto.albums.ArtistAlbum
 import com.jfalstaff.singitout.data.network.dto.artists.Artist
 import com.jfalstaff.singitout.data.repository.RepositoryImpl
 import com.jfalstaff.singitout.data.repository.RepositoryMusicImpl
@@ -16,7 +15,7 @@ import com.jfalstaff.singitout.domain.GetArtistInfoUseCase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
-class ArtistInfoViewModel: ViewModel() {
+class ArtistInfoViewModel : ViewModel() {
 
     private val getArtistInfoUseCase = GetArtistInfoUseCase(RepositoryImpl(ApiFactory.apiService))
     private val getAlbumsUseCase = GetAlbumsUseCase(RepositoryMusicImpl(ApiFactory.apiMusicService))
@@ -42,8 +41,7 @@ class ArtistInfoViewModel: ViewModel() {
     fun loadArtistAlbums(artistId: Int) {
         viewModelScope.launch {
             getAlbumsUseCase(artistId)
-                .catch {
-                        error ->
+                .catch { error ->
                     Log.d("VVV VM album", error.cause.toString())
                     Log.d("VVV VM album", error.stackTraceToString())
                 }
