@@ -1,43 +1,42 @@
 package com.jfalstaff.singitout.data.network.dto.albums
 
 import android.os.Parcelable
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ArtistAlbum (
-    @SerializedName("_type")
+data class ArtistAlbum(
+    @Json(name = "_type")
     var type: String? = "",
 
-    @SerializedName("api_path")
+    @Json(name = "api_path")
     var apiPath: String? = "",
 
-    @SerializedName("header_image_url")
+    @Json(name = "header_image_url")
     var headerImageUrl: String? = "",
 
-    @SerializedName("id")
+    @Json(name = "id")
     var id: Int = 0,
 
-    @SerializedName("image_url")
+    @Json(name = "image_url")
     var imageUrl: String? = "",
 
-    @SerializedName("index_character")
+    @Json(name = "index_character")
     var indexCharacter: String? = "",
 
-    @SerializedName("is_meme_verified")
+    @Json(name = "is_meme_verified")
     var isMemeVerified: Boolean = false,
 
-    @SerializedName("is_verified")
+    @Json(name = "is_verified")
     var isVerified: Boolean = false,
 
-    @SerializedName("name")
+    @Json(name = "name")
     var name: String? = "",
 
-    @SerializedName("slug")
+    @Json(name = "slug")
     var slug: String? = "",
 
-    @SerializedName("url")
+    @Json(name = "url")
     var url: String? = "",
-): Parcelable
+) : Parcelable
 

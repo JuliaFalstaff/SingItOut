@@ -1,4 +1,4 @@
-package com.jfalstaff.singitout.data.network
+package com.jfalstaff.singitout.data.network.api
 
 import com.jfalstaff.singitout.data.network.dto.lyrics.LyricsResponse
 import retrofit2.http.GET

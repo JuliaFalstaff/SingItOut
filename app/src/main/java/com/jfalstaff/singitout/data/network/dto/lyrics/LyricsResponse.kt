@@ -1,8 +1,8 @@
 package com.jfalstaff.singitout.data.network.dto.lyrics
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class LyricsResponse(
-    @SerializedName("lyrics")
+    @Json(name = "lyrics")
     val lyrics: Lyrics
 )

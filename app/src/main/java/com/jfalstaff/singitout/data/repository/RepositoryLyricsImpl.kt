@@ -1,6 +1,6 @@
 package com.jfalstaff.singitout.data.repository
 
-import com.jfalstaff.singitout.data.network.ApiRapidLyricsService
+import com.jfalstaff.singitout.data.network.api.ApiRapidLyricsService
 import com.jfalstaff.singitout.data.network.dto.lyrics.Lyrics
 import com.jfalstaff.singitout.domain.ILyricsRepository
 import kotlinx.coroutines.Dispatchers

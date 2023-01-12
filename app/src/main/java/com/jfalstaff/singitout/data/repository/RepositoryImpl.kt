@@ -3,7 +3,7 @@ package com.jfalstaff.singitout.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.jfalstaff.singitout.data.network.ApiService
+import com.jfalstaff.singitout.data.network.api.ApiService
 import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
 import com.jfalstaff.singitout.data.network.dto.song.Song
 import com.jfalstaff.singitout.data.network.dto.tracks.Track

@@ -2,7 +2,7 @@ package com.jfalstaff.singitout.data.network.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.jfalstaff.singitout.data.network.ApiService
+import com.jfalstaff.singitout.data.network.api.ApiService
 import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
 import retrofit2.HttpException
 import java.io.IOException

@@ -1,4 +1,4 @@
-package com.jfalstaff.singitout.data.network
+package com.jfalstaff.singitout.data.network.api
 
 import com.jfalstaff.singitout.data.network.dto.artists.ResponseArtist
 import com.jfalstaff.singitout.data.network.dto.searchDto.ResponseServer

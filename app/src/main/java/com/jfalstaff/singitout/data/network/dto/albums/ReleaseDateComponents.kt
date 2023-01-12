@@ -1,15 +1,15 @@
 package com.jfalstaff.singitout.data.network.dto.albums
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ReleaseDateComponents(
-    @SerializedName("year")
+    @Json(name = "year")
     val year: Int? = 0,
-    @SerializedName("month")
+    @Json(name = "month")
     val month: Int? = 0,
-    @SerializedName("day")
+    @Json(name = "day")
     val day: Int? = 0
-): Parcelable
+) : Parcelable

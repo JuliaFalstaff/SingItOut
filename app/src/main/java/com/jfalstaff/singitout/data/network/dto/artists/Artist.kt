@@ -1,36 +1,36 @@
 package com.jfalstaff.singitout.data.network.dto.artists
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Artist(
-    @SerializedName("alternate_names")
+    @Json(name = "alternate_names")
     val alternateNames: List<Any>? = null,
-    @SerializedName("api_path")
+    @Json(name = "api_path")
     val apiPath: String,
-    @SerializedName("description")
+    @Json(name = "description")
     val description: Description,
-    @SerializedName("facebook_name")
-    val facebookName: String,
-    @SerializedName("followers_count")
-    val followersCount: Int,
-    @SerializedName("header_image_url")
-    val headerImageUrl: String,
-    @SerializedName("id")
-    val id: Int,
-    @SerializedName("image_url")
-    val imageUrl: String,
-    @SerializedName("instagram_name")
-    val instagramName: String,
-    @SerializedName("is_meme_verified")
+    @Json(name = "facebook_name")
+    val facebookName: String? = "no data",
+    @Json(name = "followers_count")
+    val followersCount: Int? =0,
+    @Json(name = "header_image_url")
+    val headerImageUrl: String? = "",
+    @Json(name = "id")
+    val id: Int? = 0,
+    @Json(name = "image_url")
+    val imageUrl: String? = "",
+    @Json(name = "instagram_name")
+    val instagramName: String? = "no data",
+    @Json(name = "is_meme_verified")
     val isMemeVerified: Boolean,
-    @SerializedName("is_verified")
+    @Json(name = "is_verified")
     val isVerified: Boolean,
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("translation_artist")
+    @Json(name = "name")
+    val name: String? = "",
+    @Json(name = "translation_artist")
     val translationArtist: Boolean,
-    @SerializedName("twitter_name")
-    val twitterName: String,
-    @SerializedName("url")
-    val url: String
+    @Json(name = "twitter_name")
+    val twitterName: String? = "no data",
+    @Json(name = "url")
+    val url: String? = ""
 )

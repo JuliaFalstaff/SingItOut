@@ -1,15 +1,15 @@
 package com.jfalstaff.singitout.data.network.dto.searchDto
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Stats(
-    @SerializedName("unreviewed_annotations")
-    val unreviewedAnnotations: Int,
-    @SerializedName("hot")
-    val hot: Boolean,
-    @SerializedName("pageviews")
-    val pageViews: Int
-): Parcelable
+    @Json(name = "unreviewed_annotations")
+    val unreviewedAnnotations: Int? = 0,
+    @Json(name = "hot")
+    val hot: Boolean = false,
+    @Json(name = "pageviews")
+    val pageViews: Int? = 0
+) : Parcelable

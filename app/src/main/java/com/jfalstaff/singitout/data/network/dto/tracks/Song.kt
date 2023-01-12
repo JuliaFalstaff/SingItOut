@@ -4,80 +4,81 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtist
 import com.jfalstaff.singitout.data.network.dto.searchDto.Stats
+import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Song (
-    @SerializedName("annotation_count")
+    @Json(name="annotation_count")
     val annotationCount: Int? = 0,
 
-    @SerializedName("api_path")
+    @Json(name="api_path")
     val apiPath: String? = "",
 
-    @SerializedName("artist_names")
+    @Json(name="artist_names")
     val artistNames: String? = "",
 
-    @SerializedName("full_title")
+    @Json(name="full_title")
     val fullTitle: String? = "",
 
-    @SerializedName("header_image_thumbnail_url")
+    @Json(name="header_image_thumbnail_url")
     val headerImageThumbnailUrl: String? = "",
 
-    @SerializedName("header_image_url")
+    @Json(name="header_image_url")
     val headerImageUrl: String? = "",
 
-    @SerializedName("id")
+    @Json(name="id")
     val id: Int? = 0,
 
-    @SerializedName("language")
+    @Json(name="language")
     val language: String? = "",
 
-    @SerializedName("lyrics_owner_id")
+    @Json(name="lyrics_owner_id")
     val lyricsOwnerId: Int? = 0,
 
-    @SerializedName("lyrics_state")
+    @Json(name="lyrics_state")
     val lyricsState: String? = "",
 
-    @SerializedName("path")
+    @Json(name="path")
     val path: String? = "",
 //
-//    @SerializedName("pyongs_count")
+//    @Json(name="pyongs_count")
 //    val pyongsCount: Any? = null,
 
-    @SerializedName("relationships_index_url")
+    @Json(name="relationships_index_url")
     val relationshipsIndexUrl: String? = "",
 
-//    @SerializedName("release_date_components")
+//    @Json(name="release_date_components")
 //    val releaseDateComponents: Any? = null,
 //
-    @SerializedName("release_date_for_display")
+    @Json(name="release_date_for_display")
     val releaseDateForDisplay: String? = "",
 
-//    @SerializedName("release_date_with_abbreviated_month_for_display")
+//    @Json(name="release_date_with_abbreviated_month_for_display")
 //    val releaseDateWithAbbreviatedMonthForDisplay: Any? = null,
 
-    @SerializedName("song_art_image_thumbnail_url")
+    @Json(name="song_art_image_thumbnail_url")
     val songArtImageThumbnailUrl: String? = "",
 
-    @SerializedName("song_art_image_url")
+    @Json(name="song_art_image_url")
     val songArtImageUrl: String? = "",
 //
-//    @SerializedName("stats")
+//    @Json(name="stats")
 //    val stats: Stats? = null,
 
-    @SerializedName("title")
+    @Json(name="title")
     val title: String? = "",
 
-    @SerializedName("title_with_featured")
+    @Json(name="title_with_featured")
     val titleWithFeatured: String? = "",
 
-    @SerializedName("url")
+    @Json(name="url")
     val url: String? = "",
 
-//    @SerializedName("featured_artists")
+//    @Json(name="featured_artists")
 //    val featuredArtists: List<Any>? = null,
 
-    @SerializedName("primary_artist")
+    @Json(name="primary_artist")
     val primaryArtist: PrimaryArtist? = null
 ): Parcelable
 

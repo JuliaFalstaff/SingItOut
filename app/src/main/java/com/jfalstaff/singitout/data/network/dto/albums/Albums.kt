@@ -1,31 +1,32 @@
 package com.jfalstaff.singitout.data.network.dto.albums
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
+
 
 @Parcelize
 data class Albums(
-    @SerializedName("_type")
+    @Json(name = "_type")
     val type: String? = "",
-    @SerializedName("api_path")
+    @Json(name = "api_path")
     val apiPath: String? = "",
-    @SerializedName("cover_art_thumbnail_url")
+    @Json(name = "cover_art_thumbnail_url")
     val coverArtThumbnailUrl: String? = "",
-    @SerializedName("cover_art_url")
+    @Json(name = "cover_art_url")
     val coverArtUrl: String? = "",
-    @SerializedName("full_title")
+    @Json(name = "full_title")
     val fullTitle: String? = "",
-    @SerializedName("id")
+    @Json(name = "id")
     val id: Int = 0,
-    @SerializedName("name")
+    @Json(name = "name")
     val name: String? = "",
-    @SerializedName("name_with_artist")
+    @Json(name = "name_with_artist")
     val nameWithArtist: String? = "",
-    @SerializedName("release_date_components")
+    @Json(name = "release_date_components")
     val releaseDateComponents: ReleaseDateComponents? = ReleaseDateComponents(),
-    @SerializedName("url")
+    @Json(name = "url")
     val url: String? = "",
-    @SerializedName("artist")
+    @Json(name = "artist")
     val artist: ArtistAlbum? = ArtistAlbum()
-): Parcelable
+) : Parcelable

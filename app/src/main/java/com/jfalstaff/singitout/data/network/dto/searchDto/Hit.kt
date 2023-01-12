@@ -1,10 +1,10 @@
 package com.jfalstaff.singitout.data.network.dto.searchDto
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Hit(
-    @SerializedName("type")
+    @Json(name = "type")
     val type: String,
-    @SerializedName("result")
+    @Json(name = "result")
     val result: Result
 )

@@ -1,9 +1,8 @@
 package com.jfalstaff.singitout.data.network.dto.lyrics
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Body(
-    @SerializedName("plain")
-    val plain: String
-
+    @Json(name = "plain")
+    val plain: String? =""
 )

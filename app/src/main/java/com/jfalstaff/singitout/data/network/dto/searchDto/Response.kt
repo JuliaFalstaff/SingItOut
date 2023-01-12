@@ -1,8 +1,8 @@
 package com.jfalstaff.singitout.data.network.dto.searchDto
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class Response(
-    @SerializedName("hits")
+    @Json(name = "hits")
     val hits: List<Hit>? = null
 )

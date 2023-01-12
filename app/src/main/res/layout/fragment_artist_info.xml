@@ -40,11 +40,12 @@
 
         <TextView
             android:id="@+id/artistName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_8dp"
             android:textStyle="bold"
             android:textSize="@dimen/artist_name_text_size"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/artistPosterImageView"
             app:layout_constraintTop_toBottomOf="@id/artistBackgroundPosterImageView"

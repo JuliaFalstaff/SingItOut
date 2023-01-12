@@ -35,7 +35,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
     override fun onResume() {
         super.onResume()
-        getPagingSearchData(searchExpression)
+        if (searchExpression.isNotEmpty()) {
+            getPagingSearchData(searchExpression)
+        }
     }
 
     private fun initSearchToolbar() {

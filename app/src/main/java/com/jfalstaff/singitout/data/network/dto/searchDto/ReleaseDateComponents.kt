@@ -1,12 +1,12 @@
 package com.jfalstaff.singitout.data.network.dto.searchDto
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class ReleaseDateComponents(
-    @SerializedName("year")
-    val year: Int,
-    @SerializedName("month")
-    val month: Int,
-    @SerializedName("day")
-    val day: Int
+    @Json(name = "year")
+    val year: Int? = 0,
+    @Json(name = "month")
+    val month: Int? = 0,
+    @Json(name = "day")
+    val day: Int? = 0
 )

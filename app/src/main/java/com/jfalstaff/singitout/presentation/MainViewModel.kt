@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.filter
-import com.jfalstaff.singitout.data.network.ApiFactory
+import com.jfalstaff.singitout.data.network.api.ApiFactory
 import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
 import com.jfalstaff.singitout.data.repository.RepositoryImpl
 import com.jfalstaff.singitout.domain.GetSearchResultUseCase

@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jfalstaff.singitout.data.network.ApiFactory
+import com.jfalstaff.singitout.data.network.api.ApiFactory
 import com.jfalstaff.singitout.data.network.dto.tracks.Track
 import com.jfalstaff.singitout.data.repository.RepositoryImpl
 import com.jfalstaff.singitout.domain.GetAlbumTracksUseCase
