@@ -27,7 +27,7 @@ class AlbumTracksFragment :
 
     private fun renderAlbumInfo(album: Albums) {
         binding.albumTitleTextView.text = album.fullTitle
-        binding.releaseAlbumDateTextView.text = album.releaseDateComponents.toString()
+        binding.releaseAlbumDateTextView.text = album.releaseDateComponents?.year.toString()
         GlideFactory.load(requireView(), album.coverArtUrl, binding.albumCoverImageView)
     }
 

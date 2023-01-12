@@ -28,13 +28,23 @@
         tools:text="Album title" />
 
     <TextView
+        android:id="@+id/releaseAlbumDateLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8dp"
+        android:padding="@dimen/padding_4dp"
+        android:text="@string/release_label"
+        app:layout_constraintStart_toStartOf="@+id/albumTitleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/albumTitleTextView" />
+
+    <TextView
         android:id="@+id/releaseAlbumDateTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_8dp"
         android:padding="@dimen/padding_4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/albumCoverImageView"
+        app:layout_constraintEnd_toEndOf="@+id/albumTitleTextView"
+        app:layout_constraintStart_toEndOf="@+id/releaseAlbumDateLabelTextView"
         app:layout_constraintTop_toBottomOf="@+id/albumTitleTextView"
         tools:text="June 1 2022" />
 
