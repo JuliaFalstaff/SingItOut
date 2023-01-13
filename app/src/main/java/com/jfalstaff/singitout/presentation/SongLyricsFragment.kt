@@ -8,6 +8,7 @@ import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.data.network.dto.song.Song
 import com.jfalstaff.singitout.databinding.FragmentLyricBinding
 import com.jfalstaff.singitout.presentation.core.BaseFragment
+import com.jfalstaff.singitout.presentation.glide.GlideFactory
 
 class SongLyricsFragment : BaseFragment<FragmentLyricBinding>(FragmentLyricBinding::inflate) {
 
@@ -22,14 +23,12 @@ class SongLyricsFragment : BaseFragment<FragmentLyricBinding>(FragmentLyricBindi
     }
 
     private fun renderSongInfo(song: Song) {
-        Glide.with(requireActivity())
-            .load(song.album?.coverArtUrl)
-            .placeholder(R.drawable.progress_animation)
-            .into(binding.albumCoverForLyricsImageView)
+        GlideFactory.load(requireView(), song.album?.coverArtUrl, binding.albumCoverForLyricsImageView)
         binding.songTitleTextView.text = song.title
         binding.artistNameTextView.text = song.primaryArtist?.name
         binding.albumTitleTextView.text = song.album?.name
         binding.releaseDateTextView.text = song.releaseDate
+        GlideFactory.loadPaletteColorBackground(requireView(), song.album?.coverArtUrl, binding.backgroundColorImageView)
     }
 
     private fun initViewModel(id: Int) {
