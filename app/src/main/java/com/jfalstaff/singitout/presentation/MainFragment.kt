@@ -14,6 +14,7 @@ import com.jfalstaff.singitout.databinding.FragmentMainBinding
 import com.jfalstaff.singitout.presentation.adapters.SearchAdapter
 import com.jfalstaff.singitout.presentation.adapters.SearchArtistAdapter
 import com.jfalstaff.singitout.presentation.core.BaseFragment
+import com.jfalstaff.singitout.presentation.viewmodels.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

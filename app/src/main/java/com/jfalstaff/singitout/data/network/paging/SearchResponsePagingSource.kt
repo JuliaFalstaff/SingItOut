@@ -2,14 +2,16 @@ package com.jfalstaff.singitout.data.network.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.jfalstaff.singitout.data.mapper.SearchResultMapper
 import com.jfalstaff.singitout.data.network.api.ApiService
-import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
+import com.jfalstaff.singitout.domain.entities.searchEntity.Hit
 import retrofit2.HttpException
 import java.io.IOException
 
 class SearchResponsePagingSource(
     private val apiService: ApiService,
-    private val searchExpression: String
+    private val searchExpression: String,
+    private val searchResultMapper: SearchResultMapper
 ) : PagingSource<Int, Hit>() {
 
     override fun getRefreshKey(state: PagingState<Int, Hit>): Int? {
@@ -23,7 +25,13 @@ class SearchResponsePagingSource(
         return try {
             val pageNumber = params.key ?: STARTING_KEY
             val pageSize = params.loadSize
-            val responseFromApi = apiService.searchResult(searchExpression, pageNumber, pageSize)
+            val responseFromApi = searchResultMapper.mapResponseServerDtoToEntity(
+                apiService.searchResult(
+                    searchExpression,
+                    pageNumber,
+                    pageSize
+                )
+            )
             val nextKey = if (responseFromApi.response.hits.isNullOrEmpty()) {
                 null
             } else {

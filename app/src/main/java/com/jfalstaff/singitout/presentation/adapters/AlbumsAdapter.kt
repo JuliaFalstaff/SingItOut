@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jfalstaff.singitout.data.network.dto.albums.Albums
 import com.jfalstaff.singitout.databinding.ItemAlbumBinding
+import com.jfalstaff.singitout.domain.entities.albumsEntity.Albums
 import com.jfalstaff.singitout.presentation.core.BaseItemDiffCallback
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
 

@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jfalstaff.singitout.data.network.dto.tracks.Track
 import com.jfalstaff.singitout.databinding.ItemAlbumTrackBinding
+import com.jfalstaff.singitout.domain.entities.tracksEntity.Track
 import com.jfalstaff.singitout.presentation.core.BaseItemDiffCallback
 
 class AlbumTracksAdapter :

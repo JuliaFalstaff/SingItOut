@@ -3,12 +3,11 @@ package com.jfalstaff.singitout.presentation
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import com.bumptech.glide.Glide
-import com.jfalstaff.singitout.R
-import com.jfalstaff.singitout.data.network.dto.song.Song
 import com.jfalstaff.singitout.databinding.FragmentLyricBinding
+import com.jfalstaff.singitout.domain.entities.songEntity.Song
 import com.jfalstaff.singitout.presentation.core.BaseFragment
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
+import com.jfalstaff.singitout.presentation.viewmodels.SongLyricsViewModel
 
 class SongLyricsFragment : BaseFragment<FragmentLyricBinding>(FragmentLyricBinding::inflate) {
 
@@ -23,19 +22,27 @@ class SongLyricsFragment : BaseFragment<FragmentLyricBinding>(FragmentLyricBindi
     }
 
     private fun renderSongInfo(song: Song) {
-        GlideFactory.load(requireView(), song.album?.coverArtUrl, binding.albumCoverForLyricsImageView)
+        GlideFactory.load(
+            requireView(),
+            song.album?.coverArtUrl,
+            binding.albumCoverForLyricsImageView
+        )
         binding.songTitleTextView.text = song.title
         binding.artistNameTextView.text = song.primaryArtist?.name
         binding.albumTitleTextView.text = song.album?.name
         binding.releaseDateTextView.text = song.releaseDate
-        GlideFactory.loadPaletteColorBackground(requireView(), song.album?.coverArtUrl, binding.backgroundColorImageView)
+        GlideFactory.loadPaletteColorBackground(
+            requireView(),
+            song.album?.coverArtUrl,
+            binding.backgroundColorImageView
+        )
     }
 
     private fun initViewModel(id: Int) {
         viewModel.loadSongLyrics(id)
         viewModel.loadSongInfo(id)
         viewModel.lyrics.observe(viewLifecycleOwner) {
-            binding.lyricTextView.text = it.lyrics?.body?.plain ?: "no data lyrics. Empty?"
+            binding.lyricTextView.text = it.lyrics?.body?.plain
         }
         viewModel.songInfo.observe(viewLifecycleOwner) {
             renderSongInfo(it)

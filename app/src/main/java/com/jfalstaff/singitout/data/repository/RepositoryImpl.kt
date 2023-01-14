@@ -3,18 +3,29 @@ package com.jfalstaff.singitout.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.jfalstaff.singitout.data.mapper.ArtistMapper
+import com.jfalstaff.singitout.data.mapper.SearchResultMapper
+import com.jfalstaff.singitout.data.mapper.SongMapper
+import com.jfalstaff.singitout.data.mapper.TrackMapper
 import com.jfalstaff.singitout.data.network.api.ApiService
-import com.jfalstaff.singitout.data.network.dto.searchDto.Hit
-import com.jfalstaff.singitout.data.network.dto.song.Song
-import com.jfalstaff.singitout.data.network.dto.tracks.Track
 import com.jfalstaff.singitout.data.network.paging.SearchResponsePagingSource
-import com.jfalstaff.singitout.domain.IRepository
+import com.jfalstaff.singitout.domain.entities.searchEntity.Hit
+import com.jfalstaff.singitout.domain.entities.songEntity.Song
+import com.jfalstaff.singitout.domain.entities.tracksEntity.Track
+import com.jfalstaff.singitout.domain.repository.IRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class RepositoryImpl(private val apiService: ApiService) : IRepository {
+class RepositoryImpl(
+    private val apiService: ApiService,
+    private val searchResultMapper: SearchResultMapper,
+    private val trackMapper: TrackMapper,
+    private val songMapper: SongMapper
+) : IRepository {
+
+    private val artistMapper = ArtistMapper()
 
     override suspend fun getSearchResult(search: String): Flow<PagingData<Hit>> {
         return Pager(
@@ -23,23 +34,23 @@ class RepositoryImpl(private val apiService: ApiService) : IRepository {
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
-                SearchResponsePagingSource(apiService, search)
+                SearchResponsePagingSource(apiService, search, searchResultMapper)
             }
         ).flow
     }
 
     override suspend fun getArtistInfo(id: Int) = flow {
-        val artistInfo = apiService.getArtistInfo(id)
+        val artistInfo = artistMapper.mapResponseArtistDtoToEntity(apiService.getArtistInfo(id))
         emit(artistInfo.response.artist)
     }.flowOn(Dispatchers.IO)
 
     override suspend fun getAlbumTracks(id: Int): Flow<List<Track>> = flow {
-        val trackList = apiService.getAlbumTracks(id)
+        val trackList = trackMapper.mapResponseAlbumTracksDtoToEntity(apiService.getAlbumTracks(id))
         emit(trackList.response.tracks ?: listOf())
     }.flowOn(Dispatchers.IO)
 
     override suspend fun getSongInfo(id: Int): Flow<Song> = flow {
-        val song = apiService.getSongInfo(id)
+        val song = songMapper.mapResponseSongDtoToEntity(apiService.getSongInfo(id))
         emit(song.response.song)
     }.flowOn(Dispatchers.IO)
 

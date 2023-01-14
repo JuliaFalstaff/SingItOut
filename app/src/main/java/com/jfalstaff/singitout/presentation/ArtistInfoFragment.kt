@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.jfalstaff.singitout.R
-import com.jfalstaff.singitout.data.network.dto.albums.Albums
-import com.jfalstaff.singitout.data.network.dto.artists.Artist
 import com.jfalstaff.singitout.databinding.FragmentArtistInfoBinding
+import com.jfalstaff.singitout.domain.entities.albumsEntity.Albums
+import com.jfalstaff.singitout.domain.entities.artistEntity.Artist
 import com.jfalstaff.singitout.presentation.adapters.AlbumsAdapter
 import com.jfalstaff.singitout.presentation.core.BaseFragment
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
+import com.jfalstaff.singitout.presentation.viewmodels.ArtistInfoViewModel
 
 class ArtistInfoFragment :
     BaseFragment<FragmentArtistInfoBinding>(FragmentArtistInfoBinding::inflate) {

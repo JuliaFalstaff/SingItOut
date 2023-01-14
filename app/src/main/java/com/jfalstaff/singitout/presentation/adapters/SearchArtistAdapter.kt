@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtist
 import com.jfalstaff.singitout.databinding.ItemMainArtistBinding
+import com.jfalstaff.singitout.domain.entities.searchEntity.PrimaryArtist
 import com.jfalstaff.singitout.presentation.core.BaseItemDiffCallback
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
 

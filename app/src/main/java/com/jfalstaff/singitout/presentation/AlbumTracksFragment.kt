@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.jfalstaff.singitout.R
-import com.jfalstaff.singitout.data.network.dto.albums.Albums
 import com.jfalstaff.singitout.databinding.FragmentAlbumTracksBinding
+import com.jfalstaff.singitout.domain.entities.albumsEntity.Albums
 import com.jfalstaff.singitout.presentation.adapters.AlbumTracksAdapter
 import com.jfalstaff.singitout.presentation.core.BaseFragment
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
+import com.jfalstaff.singitout.presentation.viewmodels.AlbumTrackViewModel
 
 class AlbumTracksFragment :
     BaseFragment<FragmentAlbumTracksBinding>(FragmentAlbumTracksBinding::inflate) {
