@@ -8,8 +8,9 @@ import com.jfalstaff.singitout.domain.entities.lyricsEntity.Body
 import com.jfalstaff.singitout.domain.entities.lyricsEntity.Lyrics
 import com.jfalstaff.singitout.domain.entities.lyricsEntity.LyricsResponse
 import com.jfalstaff.singitout.domain.entities.lyricsEntity.LyricsText
+import javax.inject.Inject
 
-class LyricsMapper {
+class LyricsMapper @Inject constructor() {
     fun mapLyricsResponseDtoToEntity(lyricsResponseDto: LyricsResponseDto): LyricsResponse {
         return LyricsResponse(
             lyrics = mapLyricsDtoToEntity(lyricsResponseDto.lyrics)

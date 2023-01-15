@@ -7,11 +7,12 @@ import com.jfalstaff.singitout.domain.repository.IRepositoryMusic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
-class RepositoryMusicImpl(
+class RepositoryMusicImpl @Inject constructor(
     private val apiMusicService: ApiMusicService,
     private val albumsMapper: AlbumsMapper
-    ) : IRepositoryMusic {
+) : IRepositoryMusic {
 
     override suspend fun getArtistAlbums(id: Int) = flow {
         val albums = albumsMapper.mapResponseAlbumDtoToEntity(apiMusicService.getArtistAlbums(id))

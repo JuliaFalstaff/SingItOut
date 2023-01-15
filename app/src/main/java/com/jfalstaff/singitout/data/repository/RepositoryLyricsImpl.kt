@@ -8,8 +8,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
-class RepositoryLyricsImpl(
+class RepositoryLyricsImpl @Inject constructor(
     private val apiRapidLyricsService: ApiRapidLyricsService,
     private val lyricsMapper: LyricsMapper
 ) :

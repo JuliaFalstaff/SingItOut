@@ -5,32 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jfalstaff.singitout.data.mapper.LyricsMapper
-import com.jfalstaff.singitout.data.mapper.SearchResultMapper
-import com.jfalstaff.singitout.data.mapper.SongMapper
-import com.jfalstaff.singitout.data.mapper.TrackMapper
-import com.jfalstaff.singitout.data.network.api.ApiFactory
-import com.jfalstaff.singitout.data.repository.RepositoryImpl
-import com.jfalstaff.singitout.data.repository.RepositoryLyricsImpl
 import com.jfalstaff.singitout.domain.entities.lyricsEntity.Lyrics
 import com.jfalstaff.singitout.domain.entities.songEntity.Song
 import com.jfalstaff.singitout.domain.usecases.GetSongInfoUseCase
 import com.jfalstaff.singitout.domain.usecases.GetSongLyricUseCase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SongLyricsViewModel : ViewModel() {
-
-    private val getSongLyricUseCase =
-        GetSongLyricUseCase(RepositoryLyricsImpl(ApiFactory.apiRapidLyricsService, LyricsMapper()))
-    private val getSongInfo = GetSongInfoUseCase(
-        RepositoryImpl(
-            ApiFactory.apiService,
-            SearchResultMapper(),
-            TrackMapper(),
-            SongMapper()
-        )
-    )
+class SongLyricsViewModel @Inject constructor(
+    private val getSongLyricUseCase: GetSongLyricUseCase,
+    private val getSongInfo: GetSongInfoUseCase
+) : ViewModel() {
 
     private var _lyrics = MutableLiveData<Lyrics>()
     val lyrics: LiveData<Lyrics> = _lyrics

@@ -1,5 +1,6 @@
 package com.jfalstaff.singitout.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -11,14 +12,26 @@ import com.jfalstaff.singitout.presentation.adapters.AlbumsAdapter
 import com.jfalstaff.singitout.presentation.core.BaseFragment
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
 import com.jfalstaff.singitout.presentation.viewmodels.ArtistInfoViewModel
+import com.jfalstaff.singitout.presentation.viewmodels.ViewModelFactory
+import javax.inject.Inject
 
 class ArtistInfoFragment :
     BaseFragment<FragmentArtistInfoBinding>(FragmentArtistInfoBinding::inflate) {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
     private val viewModel by lazy {
-        ViewModelProvider(this)[ArtistInfoViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[ArtistInfoViewModel::class.java]
     }
     private var adapter: AlbumsAdapter? = null
+    private val component by lazy {
+        (requireActivity().application as SingItOutApp).component
+    }
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

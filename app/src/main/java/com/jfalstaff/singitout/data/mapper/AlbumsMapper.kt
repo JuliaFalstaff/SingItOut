@@ -4,8 +4,9 @@ import com.jfalstaff.singitout.data.network.dto.albums.*
 import com.jfalstaff.singitout.data.network.dto.searchDto.MetaDto
 import com.jfalstaff.singitout.domain.entities.albumsEntity.*
 import com.jfalstaff.singitout.domain.entities.searchEntity.Meta
+import javax.inject.Inject
 
-class AlbumsMapper {
+class AlbumsMapper @Inject constructor() {
     fun mapResponseAlbumDtoToEntity(responseAlbumsDto: ResponseAlbumsDto): ResponseAlbums {
         return ResponseAlbums(
             meta = mapMetaDtoToEntity(responseAlbumsDto.meta),

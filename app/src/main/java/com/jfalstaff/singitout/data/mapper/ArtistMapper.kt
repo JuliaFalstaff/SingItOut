@@ -8,8 +8,9 @@ import com.jfalstaff.singitout.domain.entities.artistEntity.Artist
 import com.jfalstaff.singitout.domain.entities.artistEntity.Description
 import com.jfalstaff.singitout.domain.entities.artistEntity.Response
 import com.jfalstaff.singitout.domain.entities.artistEntity.ResponseArtist
+import javax.inject.Inject
 
-class ArtistMapper {
+class ArtistMapper @Inject constructor() {
 
     fun mapResponseArtistDtoToEntity(responseArtistDto: ResponseArtistDto): ResponseArtist {
         return ResponseArtist(

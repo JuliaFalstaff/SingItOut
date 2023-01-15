@@ -5,33 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jfalstaff.singitout.data.mapper.AlbumsMapper
-import com.jfalstaff.singitout.data.mapper.SearchResultMapper
-import com.jfalstaff.singitout.data.mapper.SongMapper
-import com.jfalstaff.singitout.data.mapper.TrackMapper
-import com.jfalstaff.singitout.data.network.api.ApiFactory
-import com.jfalstaff.singitout.data.repository.RepositoryImpl
-import com.jfalstaff.singitout.data.repository.RepositoryMusicImpl
 import com.jfalstaff.singitout.domain.entities.albumsEntity.Albums
 import com.jfalstaff.singitout.domain.entities.artistEntity.Artist
 import com.jfalstaff.singitout.domain.usecases.GetAlbumsUseCase
 import com.jfalstaff.singitout.domain.usecases.GetArtistInfoUseCase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ArtistInfoViewModel : ViewModel() {
-
-    private val getArtistInfoUseCase =
-        GetArtistInfoUseCase(
-            RepositoryImpl(
-                ApiFactory.apiService,
-                SearchResultMapper(),
-                TrackMapper(),
-                SongMapper()
-            )
-        )
-    private val getAlbumsUseCase =
-        GetAlbumsUseCase(RepositoryMusicImpl(ApiFactory.apiMusicService, AlbumsMapper()))
+class ArtistInfoViewModel @Inject constructor(
+    private val getArtistInfoUseCase: GetArtistInfoUseCase,
+    private val getAlbumsUseCase: GetAlbumsUseCase
+) : ViewModel() {
 
     private var _artistInfo = MutableLiveData<Artist>()
     val artistInfo: LiveData<Artist> = _artistInfo

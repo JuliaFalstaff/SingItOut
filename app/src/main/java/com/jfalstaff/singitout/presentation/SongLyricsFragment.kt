@@ -1,5 +1,6 @@
 package com.jfalstaff.singitout.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -8,11 +9,23 @@ import com.jfalstaff.singitout.domain.entities.songEntity.Song
 import com.jfalstaff.singitout.presentation.core.BaseFragment
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
 import com.jfalstaff.singitout.presentation.viewmodels.SongLyricsViewModel
+import com.jfalstaff.singitout.presentation.viewmodels.ViewModelFactory
+import javax.inject.Inject
 
 class SongLyricsFragment : BaseFragment<FragmentLyricBinding>(FragmentLyricBinding::inflate) {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
     private val viewModel by lazy {
-        ViewModelProvider(requireActivity())[SongLyricsViewModel::class.java]
+        ViewModelProvider(requireActivity(), viewModelFactory)[SongLyricsViewModel::class.java]
+    }
+    private val component by lazy {
+        (requireActivity().application as SingItOutApp).component
+    }
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+        super.onAttach(context)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

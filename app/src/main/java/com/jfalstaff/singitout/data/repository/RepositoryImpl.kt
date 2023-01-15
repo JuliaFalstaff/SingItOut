@@ -17,15 +17,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
-class RepositoryImpl(
+class RepositoryImpl @Inject constructor(
     private val apiService: ApiService,
     private val searchResultMapper: SearchResultMapper,
     private val trackMapper: TrackMapper,
-    private val songMapper: SongMapper
+    private val songMapper: SongMapper,
+    private val artistMapper: ArtistMapper
 ) : IRepository {
-
-    private val artistMapper = ArtistMapper()
 
     override suspend fun getSearchResult(search: String): Flow<PagingData<Hit>> {
         return Pager(

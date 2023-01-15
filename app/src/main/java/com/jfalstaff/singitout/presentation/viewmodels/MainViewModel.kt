@@ -5,20 +5,15 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.filter
-import com.jfalstaff.singitout.data.mapper.SearchResultMapper
-import com.jfalstaff.singitout.data.mapper.SongMapper
-import com.jfalstaff.singitout.data.mapper.TrackMapper
-import com.jfalstaff.singitout.data.network.api.ApiFactory
-import com.jfalstaff.singitout.data.repository.RepositoryImpl
 import com.jfalstaff.singitout.domain.entities.searchEntity.Hit
 import com.jfalstaff.singitout.domain.usecases.GetSearchResultUseCase
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-class MainViewModel() : ViewModel() {
-
-    private val getSearchResultUseCase =
-        GetSearchResultUseCase(RepositoryImpl(ApiFactory.apiService, SearchResultMapper(), TrackMapper(), SongMapper()))
+class MainViewModel @Inject constructor(
+    private val getSearchResultUseCase: GetSearchResultUseCase
+) : ViewModel() {
 
     suspend fun getPagingData(search: String) =
         getSearchResultUseCase(search).cachedIn(viewModelScope)

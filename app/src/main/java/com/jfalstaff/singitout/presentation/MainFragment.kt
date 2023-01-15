@@ -1,5 +1,6 @@
 package com.jfalstaff.singitout.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,16 +16,28 @@ import com.jfalstaff.singitout.presentation.adapters.SearchAdapter
 import com.jfalstaff.singitout.presentation.adapters.SearchArtistAdapter
 import com.jfalstaff.singitout.presentation.core.BaseFragment
 import com.jfalstaff.singitout.presentation.viewmodels.MainViewModel
+import com.jfalstaff.singitout.presentation.viewmodels.ViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 
     private var searchExpression = ""
     private lateinit var adapter: SearchAdapter
     private lateinit var adapterArtist: SearchArtistAdapter
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
     private val viewModel by lazy {
-        ViewModelProvider(this)[MainViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+    }
+    private val component by lazy {
+        (requireActivity().application as SingItOutApp).component
+    }
+
+    override fun onAttach(context: Context) {
+        component.inject(this)
+        super.onAttach(context)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

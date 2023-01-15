@@ -2,8 +2,9 @@ package com.jfalstaff.singitout.data.mapper
 
 import com.jfalstaff.singitout.data.network.dto.searchDto.*
 import com.jfalstaff.singitout.domain.entities.searchEntity.*
+import javax.inject.Inject
 
-class SearchResultMapper {
+class SearchResultMapper @Inject constructor(){
 
     fun mapResponseServerDtoToEntity(responseServerDto: ResponseServerDto): ResponseServer {
         return ResponseServer(

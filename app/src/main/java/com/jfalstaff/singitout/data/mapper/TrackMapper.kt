@@ -10,8 +10,9 @@ import com.jfalstaff.singitout.domain.entities.tracksEntity.Response
 import com.jfalstaff.singitout.domain.entities.tracksEntity.ResponseAlbumTracks
 import com.jfalstaff.singitout.domain.entities.tracksEntity.Song
 import com.jfalstaff.singitout.domain.entities.tracksEntity.Track
+import javax.inject.Inject
 
-class TrackMapper {
+class TrackMapper @Inject constructor() {
     fun mapResponseAlbumTracksDtoToEntity(responseAlbumTracksDto: ResponseAlbumTracksDto): ResponseAlbumTracks {
         return ResponseAlbumTracks(
             meta = mapMetaDtoToEntity(responseAlbumTracksDto.meta),
