@@ -6,6 +6,7 @@ import com.jfalstaff.singitout.presentation.MainFragment
 import com.jfalstaff.singitout.presentation.SongLyricsFragment
 import dagger.Component
 
+@ApplicationScope
 @Component(modules = [DataModule::class, ViewModelModule::class])
 interface ApplicationComponent {
 

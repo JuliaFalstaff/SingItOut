@@ -17,29 +17,36 @@ import dagger.Provides
 @Module
 interface DataModule {
 
+    @ApplicationScope
     @Binds
     fun bindRepository(impl: RepositoryImpl): IRepository
+
+    @ApplicationScope
     @Binds
     fun bindRepositoryLyrics(impl: RepositoryLyricsImpl): ILyricsRepository
+
+    @ApplicationScope
     @Binds
     fun bindRepositoryMusic(impl: RepositoryMusicImpl): IRepositoryMusic
 
     companion object {
 
+        @ApplicationScope
         @Provides
         fun provideApiService(): ApiService {
             return ApiFactory.apiService
         }
 
+        @ApplicationScope
         @Provides
         fun provideApiRapidLyricsService(): ApiRapidLyricsService {
             return ApiFactory.apiRapidLyricsService
         }
 
+        @ApplicationScope
         @Provides
         fun provideApiMusicService(): ApiMusicService {
             return ApiFactory.apiMusicService
         }
     }
-
 }

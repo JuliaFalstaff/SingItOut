@@ -16,8 +16,8 @@ import javax.inject.Inject
 
 class AlbumTracksFragment :
     BaseFragment<FragmentAlbumTracksBinding>(FragmentAlbumTracksBinding::inflate) {
-    private var adapter: AlbumTracksAdapter? = null
 
+    private var adapter: AlbumTracksAdapter? = null
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val viewModel by lazy {
