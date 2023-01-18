@@ -73,9 +73,13 @@ class SearchResultMapper @Inject constructor(){
 
     private fun mapReleaseDateComponentsDtoToEntity(dateComponentsDto: ReleaseDateComponentsDto?): ReleaseDateComponents {
         return ReleaseDateComponents(
-            year = dateComponentsDto?.year ?: 0,
-            month = dateComponentsDto?.month ?: 0,
-            day = dateComponentsDto?.day ?: 0
+            year = dateComponentsDto?.year ?: EMPTY_INT_DATA,
+            month = dateComponentsDto?.month ?: EMPTY_INT_DATA,
+            day = dateComponentsDto?.day ?: EMPTY_INT_DATA
         )
+    }
+
+    companion object {
+        private const val EMPTY_INT_DATA = 0
     }
 }

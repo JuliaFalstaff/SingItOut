@@ -35,7 +35,11 @@ class LyricsMapper @Inject constructor() {
 
     private fun mapBodyDtoToEntity(bodyDto: BodyDto?): Body {
         return Body(
-            plain = bodyDto?.plain ?: ""
+            plain = bodyDto?.plain ?: NO_LYRICS_DATA
         )
+    }
+
+    companion object {
+        private const val NO_LYRICS_DATA = "-"
     }
 }

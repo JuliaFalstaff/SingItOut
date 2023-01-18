@@ -14,10 +14,10 @@ class AlbumsMapper @Inject constructor() {
         )
     }
 
-    private fun mapResponseDtoToEntity(responseDto: ResponseDto?): Response? {
+    private fun mapResponseDtoToEntity(responseDto: ResponseDto?): Response {
         return Response(
             albums = mapAlbumsListDtoToListEntity(responseDto?.albums),
-            nextPage = responseDto?.nextPage ?: ""
+            nextPage = responseDto?.nextPage ?: EMPTY_NEXT_PAGE
         )
     }
 
@@ -50,7 +50,7 @@ class AlbumsMapper @Inject constructor() {
     private fun mapArtistAlbumDtoToEntity(albumDto: ArtistAlbumDto?): ArtistAlbum {
         return ArtistAlbum(
             headerImageUrl = albumDto?.headerImageUrl,
-            id = albumDto?.id ?: 0,
+            id = albumDto?.id ?: EMPTY_INT_DATA,
             imageUrl = albumDto?.imageUrl,
             name = albumDto?.name,
             url = albumDto?.url,
@@ -63,5 +63,10 @@ class AlbumsMapper @Inject constructor() {
             month = dateDto?.month,
             day = dateDto?.day
         )
+    }
+
+    companion object {
+        private const val EMPTY_INT_DATA = 0
+        private const val EMPTY_NEXT_PAGE = ""
     }
 }

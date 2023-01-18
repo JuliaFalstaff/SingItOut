@@ -29,14 +29,14 @@ class ArtistMapper @Inject constructor() {
         return Artist(
             apiPath = artistDto.apiPath,
             description = mapDescriptionDtoToEntity(artistDto.description),
-            facebookName = artistDto.facebookName ?: "no data",
+            facebookName = artistDto.facebookName ?: NO_DATA,
             followersCount = artistDto.followersCount,
             headerImageUrl = artistDto.headerImageUrl,
             id = artistDto.id,
             imageUrl = artistDto.imageUrl,
-            instagramName = artistDto.instagramName ?: "no data",
+            instagramName = artistDto.instagramName ?: NO_DATA,
             name = artistDto.name,
-            twitterName = artistDto.twitterName ?: "no data",
+            twitterName = artistDto.twitterName ?: NO_DATA,
             url = artistDto.url
         )
     }
@@ -45,5 +45,9 @@ class ArtistMapper @Inject constructor() {
         return Description(
             plain = descriptionDto.plain
         )
+    }
+
+    companion object {
+        private const val NO_DATA = "-"
     }
 }

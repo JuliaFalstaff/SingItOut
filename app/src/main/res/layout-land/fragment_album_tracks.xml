@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/albumCoverImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/albumTitleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8dp"
+        android:padding="@dimen/padding_4dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/albumCoverImageView"
+        app:layout_constraintStart_toStartOf="@+id/albumCoverImageView"
+        app:layout_constraintTop_toBottomOf="@+id/albumCoverImageView"
+        tools:text="Album title" />
+
+    <TextView
+        android:id="@+id/releaseAlbumDateLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8dp"
+        android:padding="@dimen/padding_4dp"
+        android:text="@string/release_label"
+        app:layout_constraintStart_toStartOf="@+id/albumTitleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/albumTitleTextView" />
+
+    <TextView
+        android:id="@+id/releaseAlbumDateTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8dp"
+        android:padding="@dimen/padding_4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/releaseAlbumDateLabelTextView"
+        app:layout_constraintEnd_toEndOf="@+id/albumTitleTextView"
+        app:layout_constraintStart_toEndOf="@+id/releaseAlbumDateLabelTextView"
+        app:layout_constraintTop_toTopOf="@+id/releaseAlbumDateLabelTextView"
+        tools:text="2022" />
+
+    <TextView
+        android:id="@+id/titleHeaderTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
+        android:textAlignment="center"
+        android:paddingStart="@dimen/margin_4dp"
+        android:text="@string/tracks_header"
+        android:textSize="@dimen/item_album_track"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/albumCoverImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAlbumTracks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/titleHeaderTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/albumCoverImageView"
+        tools:layout_editor_absoluteY="24dp"
+        tools:listitem="@layout/item_album_track" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
