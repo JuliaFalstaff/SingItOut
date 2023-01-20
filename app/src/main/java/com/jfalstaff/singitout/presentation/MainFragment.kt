@@ -10,11 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.paging.map
-import com.jfalstaff.singitout.R
+import com.github.terrakok.cicerone.Router
 import com.jfalstaff.singitout.databinding.FragmentMainBinding
 import com.jfalstaff.singitout.presentation.adapters.SearchAdapter
 import com.jfalstaff.singitout.presentation.adapters.SearchArtistAdapter
 import com.jfalstaff.singitout.presentation.core.BaseFragment
+import com.jfalstaff.singitout.presentation.navigation.IScreens
 import com.jfalstaff.singitout.presentation.viewmodels.MainViewModel
 import com.jfalstaff.singitout.presentation.viewmodels.ViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
@@ -26,6 +27,13 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     private var searchExpression = ""
     private lateinit var adapter: SearchAdapter
     private lateinit var adapterArtist: SearchArtistAdapter
+
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var screen: IScreens
+
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val viewModel by lazy {
@@ -121,16 +129,11 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
     private fun setAdaptersListeners() {
         adapterArtist.onItemArtistClickListener = {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, ArtistInfoFragment.newInstance(it?.id ?: 0))
-                .addToBackStack(null)
-                .commit()
+            router.navigateTo(screen.artistInfoScreen(it?.id ?: 0))
+
         }
         adapter.onItemHitClickListener = {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, SongLyricsFragment.newInstance(it?.result?.id ?: 0))
-                .addToBackStack(null)
-                .commit()
+            router.navigateTo(screen.songLyricsScreen(it?.result?.id ?: 0))
         }
     }
 

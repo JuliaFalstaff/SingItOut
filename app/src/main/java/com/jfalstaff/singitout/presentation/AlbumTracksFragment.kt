@@ -4,12 +4,13 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import com.jfalstaff.singitout.R
+import com.github.terrakok.cicerone.Router
 import com.jfalstaff.singitout.databinding.FragmentAlbumTracksBinding
 import com.jfalstaff.singitout.domain.entities.albumsEntity.Albums
 import com.jfalstaff.singitout.presentation.adapters.AlbumTracksAdapter
 import com.jfalstaff.singitout.presentation.core.BaseFragment
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
+import com.jfalstaff.singitout.presentation.navigation.IScreens
 import com.jfalstaff.singitout.presentation.viewmodels.AlbumTrackViewModel
 import com.jfalstaff.singitout.presentation.viewmodels.ViewModelFactory
 import javax.inject.Inject
@@ -18,6 +19,13 @@ class AlbumTracksFragment :
     BaseFragment<FragmentAlbumTracksBinding>(FragmentAlbumTracksBinding::inflate) {
 
     private var adapter: AlbumTracksAdapter? = null
+
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var screen: IScreens
+
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val viewModel by lazy {
@@ -59,11 +67,7 @@ class AlbumTracksFragment :
         adapter = AlbumTracksAdapter()
         binding.recyclerViewAlbumTracks.adapter = adapter
         adapter?.onTrackItemClickListener = {
-            requireActivity().supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container, SongLyricsFragment.newInstance(it.song?.id ?: 0))
-                .addToBackStack(null)
-                .commit()
+            router.navigateTo(screen.songLyricsScreen(it.song?.id ?: 0))
         }
     }
 

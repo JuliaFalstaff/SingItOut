@@ -4,19 +4,26 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import com.jfalstaff.singitout.R
+import com.github.terrakok.cicerone.Router
 import com.jfalstaff.singitout.databinding.FragmentArtistInfoBinding
 import com.jfalstaff.singitout.domain.entities.albumsEntity.Albums
 import com.jfalstaff.singitout.domain.entities.artistEntity.Artist
 import com.jfalstaff.singitout.presentation.adapters.AlbumsAdapter
 import com.jfalstaff.singitout.presentation.core.BaseFragment
 import com.jfalstaff.singitout.presentation.glide.GlideFactory
+import com.jfalstaff.singitout.presentation.navigation.IScreens
 import com.jfalstaff.singitout.presentation.viewmodels.ArtistInfoViewModel
 import com.jfalstaff.singitout.presentation.viewmodels.ViewModelFactory
 import javax.inject.Inject
 
 class ArtistInfoFragment :
     BaseFragment<FragmentArtistInfoBinding>(FragmentArtistInfoBinding::inflate) {
+
+    @Inject
+    lateinit var router: Router
+
+    @Inject
+    lateinit var screen: IScreens
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -63,10 +70,7 @@ class ArtistInfoFragment :
 
     private fun setAlbumListener() {
         adapter?.onAlbumItemClickListener = {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, AlbumTracksFragment.newInstance(it))
-                .addToBackStack(null)
-                .commit()
+            router.navigateTo(screen.albumTracksScreen(it))
         }
     }
 
