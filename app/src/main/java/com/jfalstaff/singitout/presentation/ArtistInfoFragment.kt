@@ -46,7 +46,6 @@ class ArtistInfoFragment :
     }
 
     private fun initViewModels(artistId: Int) {
-        binding.progressBar.visibility = View.VISIBLE
         viewModel.loadArtistInfo(artistId)
         viewModel.artistInfo.observe(viewLifecycleOwner) {
             renderArtistInfo(it)
@@ -59,7 +58,6 @@ class ArtistInfoFragment :
 
     private fun renderAlbumData(list: List<Albums>?) {
         adapter?.submitList(list)
-        binding.progressBar.visibility = View.INVISIBLE
         setAlbumListener()
     }
 

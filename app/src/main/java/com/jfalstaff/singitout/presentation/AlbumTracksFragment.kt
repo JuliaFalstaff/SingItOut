@@ -41,9 +41,11 @@ class AlbumTracksFragment :
     }
 
     private fun renderAlbumInfo(album: Albums) {
+        binding.progressBarTracks?.visibility = View.VISIBLE
         binding.albumTitleTextView.text = album.fullTitle
         binding.releaseAlbumDateTextView.text = album.releaseDateComponents?.year.toString()
         GlideFactory.load(requireView(), album.coverArtUrl, binding.albumCoverImageView)
+        binding.progressBarTracks?.visibility = View.INVISIBLE
     }
 
     private fun initViewModel(album: Albums) {

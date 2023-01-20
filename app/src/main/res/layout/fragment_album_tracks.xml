@@ -73,4 +73,16 @@
         app:layout_constraintTop_toBottomOf="@id/titleHeaderTextView"
         tools:listitem="@layout/item_album_track" />
 
+    <ProgressBar
+        android:id="@+id/progressBarTracks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateDrawable="@drawable/custom_progressbar"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
