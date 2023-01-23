@@ -2,9 +2,12 @@ package com.jfalstaff.singitout.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.github.terrakok.cicerone.androidx.FragmentScreen
 import com.jfalstaff.singitout.R
 import com.jfalstaff.singitout.databinding.ActivityMainBinding
 import com.jfalstaff.singitout.presentation.navigation.IScreens
@@ -22,8 +25,24 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var screen: IScreens
-    private val navigator by lazy {
-        AppNavigator(this, R.id.container)
+
+    //    private val navigator by lazy {
+//        AppNavigator(this, R.id.container)
+//    }
+    private val navigator = object : AppNavigator(this, R.id.container) {
+        override fun setupFragmentTransaction(
+            screen: FragmentScreen,
+            fragmentTransaction: FragmentTransaction,
+            currentFragment: Fragment?,
+            nextFragment: Fragment
+        ) {
+            fragmentTransaction.setCustomAnimations(
+                R.anim.from_left,
+                R.anim.to_right,
+                R.anim.from_right,
+                R.anim.to_left
+            )
+        }
     }
     private val component by lazy {
         (application as SingItOutApp).component
