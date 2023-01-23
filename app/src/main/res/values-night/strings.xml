@@ -11,4 +11,5 @@
     <string name="release_date_label">Release Date:</string>
     <string name="album_title_label">Album:</string>
     <string name="release_label">Release:</string>
+    <string name="no_data">No data</string>
 </resources>
