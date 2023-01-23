@@ -106,7 +106,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     }
 
     private fun getPagingSearchData(searchExpression: String) {
-        this.lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getPagingData(searchExpression).collectLatest {
                 adapter.submitData(it)
                 Log.d("VVV Paging", "$it")
