@@ -14,7 +14,7 @@
             android:id="@+id/backgroundColorImageView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/background_lyrics_height"
-            android:background="#B5F44336"
+            android:background="@color/velvet"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -124,6 +124,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/backgroundColorImageView"
             tools:text="@tools:sample/lorem/random" />
+
+        <ProgressBar
+            android:id="@+id/progressBarLyrics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/custom_progressbar"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

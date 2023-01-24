@@ -139,9 +139,12 @@
             tools:listitem="@layout/item_album" />
 
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/progressBarArtistInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/custom_progressbar"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

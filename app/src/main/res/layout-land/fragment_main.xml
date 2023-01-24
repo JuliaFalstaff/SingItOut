@@ -74,11 +74,32 @@
         app:spanCount="2"
         tools:listitem="@layout/item_main_search_result" />
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/artistRVMock"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/music"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artistHeaderTextView" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/lyricsRVMock"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/music"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/verticalGuideline"
+        app:layout_constraintTop_toBottomOf="@id/lyricsHeaderTextView" />
+
     <ProgressBar
         android:id="@+id/progressBarSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:indeterminateDrawable="@drawable/custom_progressbar"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

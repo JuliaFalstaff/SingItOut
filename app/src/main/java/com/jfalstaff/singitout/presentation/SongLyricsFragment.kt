@@ -35,7 +35,6 @@ class SongLyricsFragment : BaseFragment<FragmentLyricBinding>(FragmentLyricBindi
     }
 
     private fun renderSongInfo(song: Song) {
-        binding.progressBarLyrics?.visibility = View.VISIBLE
         GlideFactory.load(
             requireView(),
             song.songArtImageUrl,
@@ -50,10 +49,11 @@ class SongLyricsFragment : BaseFragment<FragmentLyricBinding>(FragmentLyricBindi
             song.songArtImageUrl,
             binding.backgroundColorImageView
         )
-        binding.progressBarLyrics?.visibility = View.INVISIBLE
+        binding.progressBarLyrics.visibility = View.INVISIBLE
     }
 
     private fun initViewModel(id: Int) {
+        binding.progressBarLyrics.visibility = View.VISIBLE
         viewModel.loadSongLyrics(id)
         viewModel.loadSongInfo(id)
         viewModel.lyrics.observe(viewLifecycleOwner) {

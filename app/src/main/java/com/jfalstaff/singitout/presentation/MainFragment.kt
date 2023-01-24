@@ -84,6 +84,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                     binding.progressBarSearch.visibility = View.VISIBLE
                     binding.artistHeaderTextView.visibility = View.INVISIBLE
                     binding.lyricsHeaderTextView.visibility = View.INVISIBLE
+                    binding.artistRVMock.visibility = View.INVISIBLE
+                    binding.lyricsRVMock.visibility = View.INVISIBLE
                 }
                 is LoadState.NotLoading -> {
                     binding.progressBarSearch.visibility = View.INVISIBLE
@@ -92,8 +94,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 }
                 is LoadState.Error -> {
                     binding.progressBarSearch.visibility = View.INVISIBLE
-                    binding.artistHeaderTextView.visibility = View.INVISIBLE
-                    binding.lyricsHeaderTextView.visibility = View.INVISIBLE
+                    binding.artistRVMock.visibility = View.VISIBLE
+                    binding.lyricsRVMock.visibility = View.VISIBLE
                     Toast.makeText(
                         requireContext(),
                         "Error: ${(it.refresh as LoadState.Error).error.message}",
