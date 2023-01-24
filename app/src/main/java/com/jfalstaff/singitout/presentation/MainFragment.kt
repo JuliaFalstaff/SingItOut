@@ -24,10 +24,6 @@ import javax.inject.Inject
 
 class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::inflate) {
 
-    private var searchExpression = ""
-    private lateinit var adapter: SearchAdapter
-    private lateinit var adapterArtist: SearchArtistAdapter
-
     @Inject
     lateinit var router: Router
 
@@ -36,6 +32,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+    private var searchExpression = ""
+    private lateinit var adapter: SearchAdapter
+    private lateinit var adapterArtist: SearchArtistAdapter
     private val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
     }

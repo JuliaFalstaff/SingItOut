@@ -18,8 +18,6 @@ import javax.inject.Inject
 class AlbumTracksFragment :
     BaseFragment<FragmentAlbumTracksBinding>(FragmentAlbumTracksBinding::inflate) {
 
-    private var adapter: AlbumTracksAdapter? = null
-
     @Inject
     lateinit var router: Router
 
@@ -28,6 +26,7 @@ class AlbumTracksFragment :
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+    private var adapter: AlbumTracksAdapter? = null
     private val viewModel by lazy {
         ViewModelProvider(requireActivity(), viewModelFactory)[AlbumTrackViewModel::class.java]
     }

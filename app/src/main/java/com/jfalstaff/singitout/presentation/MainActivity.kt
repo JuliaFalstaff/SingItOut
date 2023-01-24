@@ -15,8 +15,6 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
     @Inject
     lateinit var router: Router
 
@@ -25,10 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var screen: IScreens
-
-    //    private val navigator by lazy {
-//        AppNavigator(this, R.id.container)
-//    }
+    private lateinit var binding: ActivityMainBinding
     private val navigator = object : AppNavigator(this, R.id.container) {
         override fun setupFragmentTransaction(
             screen: FragmentScreen,
