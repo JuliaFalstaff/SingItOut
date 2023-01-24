@@ -4,7 +4,6 @@ import android.graphics.Bitmap
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -13,8 +12,8 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.jfalstaff.singitout.R
 
-object GlideFactory: LoadImage {
-    override fun load(viewContainer: View, url: String?,  imageView: ImageView) {
+object GlideFactory : LoadImage {
+    override fun load(viewContainer: View, url: String?, imageView: ImageView) {
         Glide.with(viewContainer)
             .load(url)
             .placeholder(R.drawable.progress_animation)
@@ -29,7 +28,11 @@ object GlideFactory: LoadImage {
             .into(imageView)
     }
 
-    override fun loadPaletteColorBackground(viewContainer: View, url: String?, imageView: ImageView) {
+    override fun loadPaletteColorBackground(
+        viewContainer: View,
+        url: String?,
+        imageView: ImageView
+    ) {
         GlideApp.with(viewContainer)
             .asBitmap()
             .load(url)

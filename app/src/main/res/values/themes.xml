@@ -3,14 +3,14 @@
     <style name="ThemeSingItOut" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/velvet</item>
-        <item name="colorPrimaryVariant">@color/velvet</item>
+        <item name="colorPrimaryVariant">@color/dark_velvet</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/nude</item>
         <item name="colorSecondaryVariant">@color/nude</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
 

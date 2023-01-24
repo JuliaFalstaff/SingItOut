@@ -66,7 +66,7 @@ class SongMapper @Inject constructor() {
         return Album(
             apiPath = albumDto?.apiPath,
             coverArtUrl = albumDto?.coverArtUrl,
-            fullTitle = albumDto?.fullTitle,
+            fullTitle = albumDto?.fullTitle ?: NO_DATA,
             id = albumDto?.id ?: EMPTY_INT_DATA,
             name = albumDto?.name,
             url = albumDto?.url,
@@ -81,5 +81,6 @@ class SongMapper @Inject constructor() {
 
     companion object {
         private const val EMPTY_INT_DATA = 0
+        private const val NO_DATA = "-"
     }
 }

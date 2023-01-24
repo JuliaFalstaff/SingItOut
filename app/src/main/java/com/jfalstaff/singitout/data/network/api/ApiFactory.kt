@@ -18,8 +18,8 @@ object ApiFactory {
     private const val tokenRapidGenius = BuildConfig.TOKEN_RAPID_GENIUS
 
     private val moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
+        .add(KotlinJsonAdapterFactory())
+        .build()
 
     private val requestInterceptor = Interceptor { chain ->
         val requestWithHeader = chain.request()
@@ -77,7 +77,6 @@ object ApiFactory {
         )
         return httpClient.build()
     }
-
 
     val apiService: ApiService = retrofit.create(ApiService::class.java)
     val apiMusicService: ApiMusicService = retrofitMusic.create(ApiMusicService::class.java)

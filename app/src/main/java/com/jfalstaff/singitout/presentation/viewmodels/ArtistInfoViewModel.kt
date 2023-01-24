@@ -28,7 +28,7 @@ class ArtistInfoViewModel @Inject constructor(
         viewModelScope.launch {
             getArtistInfoUseCase(id)
                 .catch { error ->
-                    Log.d("VVV VM artist", error.stackTraceToString().toString())
+                    Log.d("VVV VM artist", error.stackTraceToString())
                 }
                 .collect { artist ->
                     _artistInfo.value = artist

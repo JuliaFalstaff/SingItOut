@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ApiMusicService {
+
     @GET("artists/{id}/albums")
     suspend fun getArtistAlbums(
         @Path("id") artistId: Int

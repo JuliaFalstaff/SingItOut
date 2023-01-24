@@ -7,7 +7,6 @@ import com.jfalstaff.singitout.data.network.api.ApiService
 import com.jfalstaff.singitout.domain.entities.searchEntity.Hit
 import retrofit2.HttpException
 import java.io.IOException
-import javax.inject.Inject
 
 class SearchResponsePagingSource(
     private val apiService: ApiService,

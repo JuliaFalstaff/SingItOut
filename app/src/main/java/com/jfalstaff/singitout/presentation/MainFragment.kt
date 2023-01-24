@@ -87,8 +87,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                 }
                 is LoadState.NotLoading -> {
                     binding.progressBarSearch.visibility = View.INVISIBLE
-                    binding.artistHeaderTextView.visibility = View.INVISIBLE
-                    binding.lyricsHeaderTextView.visibility = View.INVISIBLE
+                    binding.artistHeaderTextView.visibility = View.VISIBLE
+                    binding.lyricsHeaderTextView.visibility = View.VISIBLE
                 }
                 is LoadState.Error -> {
                     binding.progressBarSearch.visibility = View.INVISIBLE

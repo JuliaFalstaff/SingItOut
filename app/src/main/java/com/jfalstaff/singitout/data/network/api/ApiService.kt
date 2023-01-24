@@ -9,6 +9,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
+
     @GET("search")
     suspend fun searchResult(
         @Query("q") searchExpression: String,

@@ -27,7 +27,7 @@ class SongLyricsViewModel @Inject constructor(
         viewModelScope.launch {
             getSongLyricUseCase(id)
                 .catch { error ->
-                    Log.d("VVV VM lyrics", error.stackTraceToString().toString())
+                    Log.d("VVV VM lyrics", error.stackTraceToString())
                 }
                 .collect { lyrics ->
                     _lyrics.value = lyrics
@@ -39,7 +39,7 @@ class SongLyricsViewModel @Inject constructor(
         viewModelScope.launch {
             getSongInfo(id)
                 .catch { error ->
-                    Log.d("VVV VM song info", error.stackTraceToString().toString())
+                    Log.d("VVV VM song info", error.stackTraceToString())
                 }
                 .collect { songInfo ->
                     _songInfo.value = songInfo
