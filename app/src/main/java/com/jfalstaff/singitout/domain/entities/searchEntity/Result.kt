@@ -12,7 +12,6 @@ data class Result(
     val language: String? = "",
     val releaseDateComponents: ReleaseDateComponents? = null,
     val releaseDateForDisplay: String? = "",
-//  val releaseDateWithAbbreviatedMonthForDisplay: String? = "",
     val songArtImageThumbnailUrl: String? = "",
     val songArtImageUrl: String? = "",
     val title: String? = "",

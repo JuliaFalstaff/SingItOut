@@ -13,7 +13,6 @@ data class Song(
     val headerImageUrl: String? = "",
     val id: Int? = 0,
     val releaseDateForDisplay: String? = "",
-//  val releaseDateWithAbbreviatedMonthForDisplay: Any? = null,
     val songArtImageThumbnailUrl: String? = "",
     val songArtImageUrl: String? = "",
     val title: String? = "",

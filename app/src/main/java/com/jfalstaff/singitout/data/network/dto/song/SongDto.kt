@@ -60,11 +60,6 @@ data class SongDto(
     @Json(name = "lyrics_owner_id")
     @Expose
     var lyricsOwnerId: Int? = 0,
-//
-//    @Json(name="lyrics_placeholder_reason")
-//    @Expose
-//    var lyricsPlaceholderReason: Any? = "",
-
     @Json(name = "lyrics_state")
     @Expose
     var lyricsState: String? = "",
@@ -72,14 +67,6 @@ data class SongDto(
     @Json(name = "path")
     @Expose
     var path: String? = "",
-
-//    @Json(name="pyongs_count")
-//    @Expose
-//    var pyongsCount: Any? = ",
-//
-//    @Json(name="recording_location")
-//    @Expose
-//    var recordingLocation: Any? = ",
 
     @Json(name = "relationships_index_url")
     @Expose
@@ -121,68 +108,13 @@ data class SongDto(
     @Expose
     var url: String? = "",
 
-//    @Json(name="current_user_metadata")
-//    @Expose
-//    var currentUserMetadata: CurrentUserMetadata? = null,
-//
     @Json(name = "album")
     @Expose
     var album: AlbumDto? = null,
-//
-//    @Json(name="custom_performances")
-//    @Expose
-//    var customPerformances: List<CustomPerformance>? = null,
-//
-//    @Json(name="description_annotation")
-//    @Expose
-//    var descriptionAnnotation: DescriptionAnnotation? = null,
-//
-//    @Json(name="featured_artists")
-//    @Expose
-//    var featuredArtists: List<Any>? = null,
-//
-//    @Json(name="lyrics_marked_complete_by")
-//    @Expose
-//    var lyricsMarkedCompleteBy: Any? = null,
-//
-//    @Json(name="lyrics_marked_staff_approved_by")
-//    @Expose
-//    var lyricsMarkedStaffApprovedBy: Any? = null,
 
-//    @Json(name="media")
-//    @Expose
-//    var media: List<Medium__1>? = null,
 
     @Json(name = "primary_artist")
     @Expose
     var primaryArtist: PrimaryArtistDto? = null,
-
-//    @Json(name="producer_artists")
-//    @Expose
-//    var producerArtists: List<ProducerArtist>? = null,
-//
-//    @Json(name="song_relationships")
-//    @Expose
-//    var songRelationships: List<SongRelationship>? = null,
-
-//    @Json(name="translation_songs")
-//    @Expose
-//    var translationSongs: List<Any>? = null,
-//
-//    @Json(name="verified_annotations_by")
-//    @Expose
-//    var verifiedAnnotationsBy: List<Any>? = null,
-//
-//    @Json(name="verified_contributors")
-//    @Expose
-//    var verifiedContributors: List<Any>? = null,
-//
-//    @Json(name="verified_lyrics_by")
-//    @Expose
-//    var verifiedLyricsBy: List<Any>? = null,
-//
-//    @Json(name="writer_artists")
-//    @Expose
-//    var writerArtists: List<WriterArtist>? = null,
 ) : Parcelable
 

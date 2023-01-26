@@ -24,9 +24,5 @@ data class LyricsDto(
     @Json(name = "song_id")
     @Expose
     var songId: Int? = 0,
-//
-//    @Json(name="tracking_data")
-//    @Expose
-//    var trackingData: TrackingData? = null,
 )
 

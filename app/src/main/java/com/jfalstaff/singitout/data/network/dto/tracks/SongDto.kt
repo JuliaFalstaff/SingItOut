@@ -39,30 +39,18 @@ data class SongDto (
 
     @Json(name="path")
     val path: String? = "",
-//
-//    @Json(name="pyongs_count")
-//    val pyongsCount: Any? = null,
 
     @Json(name="relationships_index_url")
     val relationshipsIndexUrl: String? = "",
-
-//    @Json(name="release_date_components")
-//    val releaseDateComponents: Any? = null,
 //
     @Json(name="release_date_for_display")
     val releaseDateForDisplay: String? = "",
-
-//    @Json(name="release_date_with_abbreviated_month_for_display")
-//    val releaseDateWithAbbreviatedMonthForDisplay: Any? = null,
 
     @Json(name="song_art_image_thumbnail_url")
     val songArtImageThumbnailUrl: String? = "",
 
     @Json(name="song_art_image_url")
     val songArtImageUrl: String? = "",
-//
-//    @Json(name="stats")
-//    val stats: Stats? = null,
 
     @Json(name="title")
     val title: String? = "",
@@ -72,9 +60,6 @@ data class SongDto (
 
     @Json(name="url")
     val url: String? = "",
-
-//    @Json(name="featured_artists")
-//    val featuredArtists: List<Any>? = null,
 
     @Json(name="primary_artist")
     val primaryArtist: PrimaryArtistDto? = null
