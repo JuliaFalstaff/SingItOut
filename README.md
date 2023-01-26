@@ -1,4 +1,4 @@
-# SingItOut
+# Sing It Out
 
 ***This application in progress..***
 
