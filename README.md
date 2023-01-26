@@ -6,6 +6,14 @@
 - Searching of artist or lyrics
 - Artist information (albums, tracks and lyrics)
 
+| Search Screen | Artist Info|
+| ------------- | ------------- |
+|<img src="app/src/main/res/drawable/search_screenshot.png" width="200" height="400" />|<img src="app/src/main/res/drawable/artist_screenshot.png" width="200" height="400" />
+
+|Album Screen|Lyrics Screen|
+| ------------- | ------------- |
+| <img src="app/src/main/res/drawable/album_screenshot.png" width="200" height="400"/>  | <img src="app/src/main/res/drawable/lyrics_screenshot.png" width="200" height="400"/> |
+
 ## Tech stack & Open-source libraries
 * Minimum SDK level 23
 #### 1. Architecture
