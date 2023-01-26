@@ -1,6 +1,7 @@
 package com.jfalstaff.singitout.data.network.dto.tracks
 
 import android.os.Parcelable
+import com.google.gson.annotations.Expose
 import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtistDto
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
@@ -42,9 +43,12 @@ data class SongDto (
 
     @Json(name="relationships_index_url")
     val relationshipsIndexUrl: String? = "",
-//
+
     @Json(name="release_date_for_display")
     val releaseDateForDisplay: String? = "",
+
+    @Json(name = "release_date_with_abbreviated_month_for_display")
+    var releaseDateWithAbbreviatedMonthForDisplay: String? = "",
 
     @Json(name="song_art_image_thumbnail_url")
     val songArtImageThumbnailUrl: String? = "",
