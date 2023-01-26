@@ -1,6 +1,6 @@
 # SingItOut
 
-**This application in progress..**
+***This application in progress..***
 
 "Sing It Out" gives you information about artists and music lyrics:
 - Searching of artist or lyrics
