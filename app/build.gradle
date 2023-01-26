@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -16,6 +18,20 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildTypes.each {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("token.properties").newDataInputStream())
+        def tokenAuth = properties.getProperty("TOKEN_GENIUS", "")
+        it.buildConfigField "String", "TOKEN_GENIUS", tokenAuth
+    }
+
+    buildTypes.each {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("tokenRapid.properties").newDataInputStream())
+        def tokenRapidAuth = properties.getProperty("TOKEN_RAPID_GENIUS", "")
+        it.buildConfigField "String", "TOKEN_RAPID_GENIUS", tokenRapidAuth
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,6 +44,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += [
+                '-Xjvm-default=enable'
+        ]
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 
@@ -40,4 +62,48 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    //Room
+    implementation 'androidx.room:room-runtime:2.4.3'
+    kapt 'androidx.room:room-compiler:2.4.3'
+    implementation("androidx.room:room-ktx:2.4.3")
+
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+
+    //Paging 3
+    def paging_version = "3.1.1"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    /*Moshi*/
+    def moshiVersion = "1.9.1"
+    implementation("com.squareup.moshi:moshi:$moshiVersion")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+
+    //Palette
+    implementation 'androidx.palette:palette-ktx:1.0.0'
+
+    //Dagger 2
+    implementation 'com.google.dagger:dagger:2.40'
+    kapt 'com.google.dagger:dagger-compiler:2.40'
+
+    //Cicerone
+    implementation 'com.github.terrakok:cicerone:7.1'
 }

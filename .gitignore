@@ -15,3 +15,5 @@
 .cxx
 local.properties
 apikey.properties
+token.properties
+tokenRapid.properties

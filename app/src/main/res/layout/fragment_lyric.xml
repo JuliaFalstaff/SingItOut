@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/backgroundColorImageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/background_lyrics_height"
+            android:background="@color/velvet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/albumCoverForLyricsImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintBottom_toBottomOf="@+id/backgroundColorImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/songTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8dp"
+            android:padding="@dimen/padding_4dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/song_title_text_sie"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/albumCoverForLyricsImageView"
+            app:layout_constraintTop_toTopOf="@+id/albumCoverForLyricsImageView"
+            tools:text="SONG TITLE" />
+
+        <TextView
+            android:id="@+id/artistNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8dp"
+            android:layout_marginBottom="@dimen/margin_8dp"
+            android:padding="@dimen/padding_4dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/artist_name_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/albumCoverForLyricsImageView"
+            app:layout_constraintTop_toBottomOf="@+id/songTitleTextView"
+            tools:text="Artist Name" />
+
+        <TextView
+            android:id="@+id/albumTitleLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:padding="@dimen/padding_4dp"
+            android:text="@string/album_title_label"
+            android:textColor="@color/white"
+            android:textSize="@dimen/album_text_size"
+            app:layout_constraintStart_toEndOf="@+id/albumCoverForLyricsImageView"
+            app:layout_constraintTop_toBottomOf="@+id/artistNameTextView" />
+
+        <TextView
+            android:id="@+id/albumTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8dp"
+            android:padding="@dimen/padding_8dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/album_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/albumTitleLabelTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/albumTitleLabelTextView"
+            app:layout_constraintTop_toTopOf="@+id/albumTitleLabelTextView"
+            tools:text="Album Name" />
+
+        <TextView
+            android:id="@+id/releaseDateLabelTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8dp"
+            android:padding="@dimen/padding_4dp"
+            android:text="@string/release_date_label"
+            android:textColor="@color/white"
+            android:textSize="@dimen/release_date_text_size"
+            app:layout_constraintStart_toEndOf="@+id/albumCoverForLyricsImageView"
+            app:layout_constraintTop_toBottomOf="@+id/albumTitleTextView" />
+
+        <TextView
+            android:id="@+id/releaseDateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_4dp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/release_date_text_size"
+            app:layout_constraintBottom_toBottomOf="@+id/releaseDateLabelTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/releaseDateLabelTextView"
+            app:layout_constraintTop_toTopOf="@+id/releaseDateLabelTextView"
+            tools:text="20-03-2021" />
+
+        <TextView
+            android:id="@+id/lyricTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8dp"
+            android:padding="@dimen/margin_4dp"
+            android:textAlignment="center"
+            android:textSize="@dimen/songs_lyrics_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backgroundColorImageView"
+            tools:text="@tools:sample/lorem/random" />
+
+        <ProgressBar
+            android:id="@+id/progressBarLyrics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/custom_progressbar"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

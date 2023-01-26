@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/artistBackgroundPosterImageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/background_image_height"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/artistPosterImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_margin="@dimen/margin_8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineBackground"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="85dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/artistName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_8dp"
+            android:textStyle="bold"
+            android:textSize="@dimen/artist_name_text_size"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/artistPosterImageView"
+            app:layout_constraintTop_toBottomOf="@id/artistBackgroundPosterImageView"
+            tools:text="@tools:sample/full_names" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/facebookLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_facebook"
+            app:layout_constraintStart_toEndOf="@+id/artistPosterImageView"
+            app:layout_constraintTop_toBottomOf="@id/artistName" />
+
+        <TextView
+            android:id="@+id/facebookNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/facebookLabelTextView"
+            app:layout_constraintTop_toBottomOf="@id/artistName" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/instagramLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_instagram"
+            app:layout_constraintStart_toEndOf="@+id/artistPosterImageView"
+            app:layout_constraintTop_toBottomOf="@id/facebookLabelTextView" />
+
+
+        <TextView
+            android:id="@+id/instagramNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/instagramLabelTextView"
+            app:layout_constraintTop_toBottomOf="@id/facebookLabelTextView" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/twitterLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_twitter"
+            app:layout_constraintStart_toEndOf="@+id/artistPosterImageView"
+            app:layout_constraintTop_toBottomOf="@id/instagramLabelTextView" />
+
+        <TextView
+            android:id="@+id/twitterNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/twitterLabelTextView"
+            app:layout_constraintTop_toBottomOf="@id/instagramLabelTextView" />
+
+        <TextView
+            android:id="@+id/artistDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8dp"
+            android:padding="@dimen/padding_4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/twitterLabelTextView"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/albumsHeaderTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_8dp"
+            android:padding="@dimen/padding_4dp"
+            android:text="Artist Albums"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/artistDescription" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/albumsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_recycler"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/albumsHeaderTextView"
+            app:spanCount="3"
+            tools:listitem="@layout/item_album" />
+
+        <ProgressBar
+            android:id="@+id/progressBarArtistInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateDrawable="@drawable/custom_progressbar"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/artistPosterImageView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
