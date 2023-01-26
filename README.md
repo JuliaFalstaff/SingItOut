@@ -1,8 +1,8 @@
 # SingItOut
 
-This application in progress..
+**This application in progress..**
 
-SingItOut gives you information about artists and music lyrics:
+"Sing It Out" gives you information about artists and music lyrics:
 - Searching of artist or lyrics
 - Artist information (albums, tracks and lyrics)
 
