@@ -32,7 +32,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-    private var searchExpression = ""
+    private var searchExpression = EMPTY_STRING
     private lateinit var adapter: SearchAdapter
     private lateinit var adapterArtist: SearchArtistAdapter
     private val viewModel by lazy {
@@ -139,6 +139,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     }
 
     companion object {
+        private const val EMPTY_STRING = ""
         fun newInstance(): MainFragment = MainFragment()
     }
 }

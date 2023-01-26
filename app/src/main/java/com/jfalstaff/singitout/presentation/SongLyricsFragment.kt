@@ -43,7 +43,7 @@ class SongLyricsFragment : BaseFragment<FragmentLyricBinding>(FragmentLyricBindi
         binding.songTitleTextView.text = song.title
         binding.artistNameTextView.text = song.primaryArtist?.name
         binding.albumTitleTextView.text = song.album?.name
-        binding.releaseDateTextView.text = song.releaseDate
+        binding.releaseDateTextView.text = song.releaseDateWithAbbreviatedMonthForDisplay
         GlideFactory.loadPaletteColorBackground(
             requireView(),
             song.songArtImageUrl,
