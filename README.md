@@ -3,7 +3,7 @@
 ***This application in progress..***
 
 "Sing It Out" gives you information about artists and music lyrics:
-- Searching of artist or lyrics
+- Searching of artists or lyrics
 - Artist information (albums, tracks and lyrics)
 
 | Search Screen | Artist Info|
