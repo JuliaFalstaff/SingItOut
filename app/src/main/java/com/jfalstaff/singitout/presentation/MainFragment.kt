@@ -81,19 +81,16 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         adapter.addLoadStateListener {
             when (it.refresh) {
                 is LoadState.Loading -> {
-                    binding.progressBarSearch?.visibility = View.VISIBLE
                     binding.artistRVMock.visibility = View.INVISIBLE
                     binding.lyricsRVMock.visibility = View.INVISIBLE
                     startShimmering()
                 }
                 is LoadState.NotLoading -> {
-                    binding.progressBarSearch?.visibility = View.INVISIBLE
                     binding.recyclerSearch.visibility = View.VISIBLE
                     binding.horizontalRV.visibility = View.VISIBLE
                     stopShimmering()
                 }
                 is LoadState.Error -> {
-                    binding.progressBarSearch?.visibility = View.INVISIBLE
                     binding.artistRVMock.visibility = View.VISIBLE
                     binding.lyricsRVMock.visibility = View.VISIBLE
                     stopShimmering()
@@ -139,22 +136,22 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         }
     }
 
-    private fun startShimmering() {
-        binding.artistPlaceholder?.shimmerArtistFrameLayout?.startShimmer()
-        binding.lyricsPlaceholder?.shimmerLyricsFrameLayout?.startShimmer()
-        binding.artistPlaceholder?.shimmerArtistFrameLayout?.visibility = View.VISIBLE
-        binding.lyricsPlaceholder?.shimmerLyricsFrameLayout?.visibility = View.VISIBLE
-        binding.recyclerSearch.visibility = View.GONE
-        binding.horizontalRV.visibility = View.GONE
+    private fun startShimmering() = with(binding) {
+        artistPlaceholder.shimmerArtistFrameLayout.startShimmer()
+        lyricsPlaceholder.shimmerLyricsFrameLayout.startShimmer()
+        artistPlaceholder.shimmerArtistFrameLayout.visibility = View.VISIBLE
+        lyricsPlaceholder.shimmerLyricsFrameLayout.visibility = View.VISIBLE
+        recyclerSearch.visibility = View.GONE
+        horizontalRV.visibility = View.GONE
     }
 
-    private fun stopShimmering() {
-        binding.artistPlaceholder?.shimmerArtistFrameLayout?.stopShimmer()
-        binding.lyricsPlaceholder?.shimmerLyricsFrameLayout?.stopShimmer()
-        binding.artistPlaceholder?.shimmerArtistFrameLayout?.visibility = View.INVISIBLE
-        binding.lyricsPlaceholder?.shimmerLyricsFrameLayout?.visibility = View.INVISIBLE
-        binding.recyclerSearch.visibility = View.VISIBLE
-        binding.horizontalRV.visibility = View.VISIBLE
+    private fun stopShimmering() = with(binding)  {
+        artistPlaceholder.shimmerArtistFrameLayout.stopShimmer()
+        lyricsPlaceholder.shimmerLyricsFrameLayout.stopShimmer()
+        artistPlaceholder.shimmerArtistFrameLayout.visibility = View.INVISIBLE
+        lyricsPlaceholder.shimmerLyricsFrameLayout.visibility = View.INVISIBLE
+        recyclerSearch.visibility = View.VISIBLE
+        horizontalRV.visibility = View.VISIBLE
     }
 
     companion object {

@@ -21,6 +21,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarLayout" />
 
+    <include
+        android:id="@+id/artistPlaceholder"
+        layout="@layout/shimmering_artist_placeholder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@id/verticalGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artistHeaderTextView" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/horizontalRV"
         android:layout_width="0dp"
@@ -62,6 +72,16 @@
         app:layout_constraintStart_toEndOf="@id/verticalGuideline"
         app:layout_constraintTop_toBottomOf="@id/toolbarLayout" />
 
+    <include
+        android:id="@+id/lyricsPlaceholder"
+        layout="@layout/shimmering_lyrics_placeholder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/verticalGuideline"
+        app:layout_constraintTop_toBottomOf="@id/lyricsHeaderTextView" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSearch"
         android:layout_width="0dp"
@@ -93,17 +113,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/verticalGuideline"
         app:layout_constraintTop_toBottomOf="@id/lyricsHeaderTextView" />
-
-    <ProgressBar
-        android:id="@+id/progressBarSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminateDrawable="@drawable/custom_progressbar"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
