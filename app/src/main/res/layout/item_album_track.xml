@@ -21,7 +21,7 @@
             android:textAlignment="center"
             android:textSize="@dimen/item_album_track"
             android:textStyle="bold"
-            android:textColor="@color/album_number"
+            android:alpha="0.6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="1" />
