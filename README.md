@@ -32,6 +32,7 @@
 #### 4. UI
 * Glide
 * Color Palette Api
+* Shimmer Effect
 #### 5. DI
 * Dagger 2
 #### 5. Navigation
