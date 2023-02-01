@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/albumCoverImageView"
@@ -54,9 +54,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_4dp"
-        android:textAlignment="center"
         android:paddingStart="@dimen/margin_4dp"
         android:text="@string/tracks_header"
+        android:textAlignment="center"
         android:textSize="@dimen/item_album_track"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,9 +69,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/titleHeaderTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/albumCoverImageView"
+        app:layout_constraintTop_toBottomOf="@id/titleHeaderTextView"
         tools:layout_editor_absoluteY="24dp"
         tools:listitem="@layout/item_album_track" />
 

@@ -81,21 +81,19 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         adapter.addLoadStateListener {
             when (it.refresh) {
                 is LoadState.Loading -> {
-                    binding.progressBarSearch.visibility = View.VISIBLE
-                    binding.artistHeaderTextView.visibility = View.INVISIBLE
-                    binding.lyricsHeaderTextView.visibility = View.INVISIBLE
                     binding.artistRVMock.visibility = View.INVISIBLE
                     binding.lyricsRVMock.visibility = View.INVISIBLE
+                    startShimmering()
                 }
                 is LoadState.NotLoading -> {
-                    binding.progressBarSearch.visibility = View.INVISIBLE
-                    binding.artistHeaderTextView.visibility = View.VISIBLE
-                    binding.lyricsHeaderTextView.visibility = View.VISIBLE
+                    binding.recyclerSearch.visibility = View.VISIBLE
+                    binding.horizontalRV.visibility = View.VISIBLE
+                    stopShimmering()
                 }
                 is LoadState.Error -> {
-                    binding.progressBarSearch.visibility = View.INVISIBLE
                     binding.artistRVMock.visibility = View.VISIBLE
                     binding.lyricsRVMock.visibility = View.VISIBLE
+                    stopShimmering()
                     Toast.makeText(
                         requireContext(),
                         "Error: ${(it.refresh as LoadState.Error).error.message}",
@@ -136,6 +134,24 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         adapter.onItemHitClickListener = {
             router.navigateTo(screen.songLyricsScreen(it?.result?.id ?: 0))
         }
+    }
+
+    private fun startShimmering() = with(binding) {
+        artistPlaceholder.shimmerArtistFrameLayout.startShimmer()
+        lyricsPlaceholder.shimmerLyricsFrameLayout.startShimmer()
+        artistPlaceholder.shimmerArtistFrameLayout.visibility = View.VISIBLE
+        lyricsPlaceholder.shimmerLyricsFrameLayout.visibility = View.VISIBLE
+        recyclerSearch.visibility = View.GONE
+        horizontalRV.visibility = View.GONE
+    }
+
+    private fun stopShimmering() = with(binding)  {
+        artistPlaceholder.shimmerArtistFrameLayout.stopShimmer()
+        lyricsPlaceholder.shimmerLyricsFrameLayout.stopShimmer()
+        artistPlaceholder.shimmerArtistFrameLayout.visibility = View.INVISIBLE
+        lyricsPlaceholder.shimmerLyricsFrameLayout.visibility = View.INVISIBLE
+        recyclerSearch.visibility = View.VISIBLE
+        horizontalRV.visibility = View.VISIBLE
     }
 
     companion object {

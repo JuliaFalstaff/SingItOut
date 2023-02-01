@@ -43,9 +43,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_8dp"
-            android:textStyle="bold"
-            android:textSize="@dimen/artist_name_text_size"
             android:textAlignment="center"
+            android:textSize="@dimen/artist_name_text_size"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/artistPosterImageView"
             app:layout_constraintTop_toBottomOf="@id/artistBackgroundPosterImageView"
@@ -121,10 +121,19 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_8dp"
             android:padding="@dimen/padding_4dp"
-            android:text="Artist Albums"
+            android:text="@string/artist_albums"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/artistDescription" />
+
+        <include
+            android:id="@+id/albumsPlaceholder"
+            layout="@layout/shimmering_album_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/albumsHeaderTextView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/albumsRecyclerView"

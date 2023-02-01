@@ -106,4 +106,7 @@ dependencies {
 
     //Cicerone
     implementation 'com.github.terrakok:cicerone:7.1'
+
+    //Shimmering
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

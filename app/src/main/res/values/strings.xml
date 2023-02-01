@@ -12,4 +12,5 @@
     <string name="album_title_label">Album:</string>
     <string name="release_label">Release:</string>
     <string name="no_data">No data</string>
+    <string name="artist_albums">Artist Albums</string>
 </resources>

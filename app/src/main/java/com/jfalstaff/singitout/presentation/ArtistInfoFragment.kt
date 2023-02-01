@@ -1,7 +1,10 @@
 package com.jfalstaff.singitout.presentation
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.github.terrakok.cicerone.Router
@@ -65,8 +68,10 @@ class ArtistInfoFragment :
     }
 
     private fun renderAlbumData(list: List<Albums>?) {
+        startShimmering()
         adapter?.submitList(list)
         setAlbumListener()
+        stopShimmering()
         binding.progressBarArtistInfo.visibility = View.INVISIBLE
     }
 
@@ -84,10 +89,47 @@ class ArtistInfoFragment :
         twitterNameTextView.text = artist?.twitterName
         GlideFactory.loadCircleCrop(requireView(), artist?.imageUrl, artistPosterImageView)
         GlideFactory.load(requireView(), artist?.headerImageUrl, artistBackgroundPosterImageView)
+        setSocialMediaIconsListeners(artist)
+    }
+
+    private fun setSocialMediaIconsListeners(artist: Artist?) = with(binding) {
+        facebookNameTextView.setOnClickListener {
+            val fbUrl = "$FACEBOOK_BASE_URL${artist?.facebookName}"
+            Intent(Intent.ACTION_VIEW, Uri.parse(fbUrl)).apply {
+                startActivity(this)
+            }
+        }
+        twitterNameTextView.setOnClickListener {
+            val twitterUrl = "$TWITTER_BASE_URL${artist?.twitterName}"
+            Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl)).apply {
+                startActivity(this)
+            }
+        }
+        instagramNameTextView.setOnClickListener {
+            val instagramUrl = "$INSTAGRAM_BASE_URL${artist?.instagramName}"
+            Intent(Intent.ACTION_VIEW, Uri.parse(instagramUrl)).apply {
+                startActivity(this)
+            }
+        }
+    }
+
+    private fun startShimmering() = with(binding) {
+        albumsPlaceholder.shimmerAlbumFrameLayout.startShimmer()
+        albumsPlaceholder.shimmerAlbumFrameLayout.visibility = View.VISIBLE
+        albumsRecyclerView.visibility = View.GONE
+    }
+
+    private fun stopShimmering() = with(binding)  {
+        albumsPlaceholder.shimmerAlbumFrameLayout.stopShimmer()
+        albumsPlaceholder.shimmerAlbumFrameLayout.visibility = View.INVISIBLE
+        albumsRecyclerView.visibility = View.VISIBLE
     }
 
     companion object {
         private const val ID_ARTIST_KEY = "artist_id"
+        private const val FACEBOOK_BASE_URL = "https://www.facebook.com/"
+        private const val TWITTER_BASE_URL = "https://twitter.com/"
+        private const val INSTAGRAM_BASE_URL = "https://www.instagram.com/"
         fun newInstance(id: Int) = ArtistInfoFragment().apply {
             arguments = Bundle().apply {
                 putInt(ID_ARTIST_KEY, id)
