@@ -68,8 +68,10 @@ class ArtistInfoFragment :
     }
 
     private fun renderAlbumData(list: List<Albums>?) {
+        startShimmering()
         adapter?.submitList(list)
         setAlbumListener()
+        stopShimmering()
         binding.progressBarArtistInfo.visibility = View.INVISIBLE
     }
 
@@ -109,6 +111,18 @@ class ArtistInfoFragment :
                 startActivity(this)
             }
         }
+    }
+
+    private fun startShimmering() = with(binding) {
+        albumsPlaceholder.shimmerAlbumFrameLayout.startShimmer()
+        albumsPlaceholder.shimmerAlbumFrameLayout.visibility = View.VISIBLE
+        albumsRecyclerView.visibility = View.GONE
+    }
+
+    private fun stopShimmering() = with(binding)  {
+        albumsPlaceholder.shimmerAlbumFrameLayout.stopShimmer()
+        albumsPlaceholder.shimmerAlbumFrameLayout.visibility = View.INVISIBLE
+        albumsRecyclerView.visibility = View.VISIBLE
     }
 
     companion object {
