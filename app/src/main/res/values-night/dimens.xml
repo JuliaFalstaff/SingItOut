@@ -21,4 +21,5 @@
     <dimen name="album_text_size">12sp</dimen>
     <dimen name="margin_16dp">16dp</dimen>
     <dimen name="view_divider_width">1dp</dimen>
+    <dimen name="background_lyrics_width">250dp</dimen>
 </resources>
