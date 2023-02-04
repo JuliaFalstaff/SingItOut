@@ -25,6 +25,7 @@ android {
         properties.load(project.rootProject.file("token.properties").inputStream())
         val tokenAuth = properties.getProperty("TOKEN_GENIUS", "")
         it.buildConfigField("String", "TOKEN_GENIUS", tokenAuth)
+    }
 
         buildTypes.onEach {
             val properties = Properties()
@@ -57,6 +58,7 @@ android {
             viewBinding = true
         }
     }
+
 
     dependencies {
 
@@ -106,4 +108,3 @@ android {
         //Shimmering
         implementation(Dependencies.SHIMMER_DEP)
     }
-}
