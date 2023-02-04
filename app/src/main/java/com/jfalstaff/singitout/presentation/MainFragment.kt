@@ -81,8 +81,9 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
         adapter.addLoadStateListener {
             when (it.refresh) {
                 is LoadState.Loading -> {
-                    binding.artistRVMock.visibility = View.INVISIBLE
-                    binding.lyricsRVMock.visibility = View.INVISIBLE
+                    binding.emptyDataImageView.visibility = View.INVISIBLE
+                    binding.lyricsHeaderTextView.visibility = View.VISIBLE
+                    binding.artistHeaderTextView.visibility = View.VISIBLE
                     startShimmering()
                 }
                 is LoadState.NotLoading -> {
@@ -91,8 +92,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
                     stopShimmering()
                 }
                 is LoadState.Error -> {
-                    binding.artistRVMock.visibility = View.VISIBLE
-                    binding.lyricsRVMock.visibility = View.VISIBLE
+                    binding.emptyDataImageView.visibility = View.VISIBLE
                     stopShimmering()
                     Toast.makeText(
                         requireContext(),

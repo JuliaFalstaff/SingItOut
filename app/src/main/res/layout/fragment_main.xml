@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/padding_8dp"
         android:text="@string/related_artists_search_header"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarLayout" />
@@ -50,9 +51,10 @@
         android:layout_marginTop="7dp"
         android:padding="@dimen/padding_8dp"
         android:text="@string/related_lyrics_search_header"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/artistRVMock" />
+        app:layout_constraintTop_toBottomOf="@+id/artistPlaceholder" />
 
     <include
         android:id="@+id/lyricsPlaceholder"
@@ -78,22 +80,13 @@
         tools:listitem="@layout/item_main_search_result" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/artistRVMock"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:src="@drawable/music_alpha"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/artistHeaderTextView" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/lyricsRVMock"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:src="@drawable/music_alpha"
+        android:id="@+id/emptyDataImageView"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/music_search_icon_64"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lyricsHeaderTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
