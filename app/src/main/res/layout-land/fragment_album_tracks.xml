@@ -6,6 +6,16 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/albumBackgroundImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/velvet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerViewAlbumTracks"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/albumCoverImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +31,7 @@
         android:layout_margin="@dimen/margin_8dp"
         android:padding="@dimen/padding_4dp"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/albumCoverImageView"
         app:layout_constraintStart_toStartOf="@+id/albumCoverImageView"
@@ -34,6 +45,7 @@
         android:layout_margin="@dimen/margin_8dp"
         android:padding="@dimen/padding_4dp"
         android:text="@string/release_label"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@+id/albumTitleTextView"
         app:layout_constraintTop_toBottomOf="@+id/albumTitleTextView" />
 
@@ -43,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_8dp"
         android:padding="@dimen/padding_4dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/releaseAlbumDateLabelTextView"
         app:layout_constraintEnd_toEndOf="@+id/albumTitleTextView"
         app:layout_constraintStart_toEndOf="@+id/releaseAlbumDateLabelTextView"
@@ -57,7 +70,7 @@
         android:paddingStart="@dimen/margin_4dp"
         android:text="@string/tracks_header"
         android:textAlignment="center"
-        android:textSize="@dimen/item_album_track"
+        android:textSize="@dimen/song_title_text_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/albumCoverImageView"
