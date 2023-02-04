@@ -6,10 +6,19 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/albumBackgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/background_lyrics_height"
+        android:background="@color/velvet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/albumCoverImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_4dp"
+        app:layout_constraintBottom_toBottomOf="@id/albumBackgroundImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
@@ -21,8 +30,8 @@
         android:layout_margin="@dimen/margin_8dp"
         android:padding="@dimen/padding_4dp"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/titleHeaderTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/albumCoverImageView"
         app:layout_constraintTop_toTopOf="@+id/albumCoverImageView"
@@ -33,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_8dp"
+        android:textColor="@color/white"
         android:padding="@dimen/padding_4dp"
         android:text="@string/release_label"
         app:layout_constraintStart_toStartOf="@+id/albumTitleTextView"
@@ -42,6 +52,7 @@
         android:id="@+id/releaseAlbumDateTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:layout_margin="@dimen/margin_8dp"
         android:padding="@dimen/padding_4dp"
         app:layout_constraintEnd_toEndOf="@+id/albumTitleTextView"
@@ -56,11 +67,11 @@
         android:layout_margin="@dimen/margin_4dp"
         android:paddingStart="@dimen/margin_4dp"
         android:text="@string/tracks_header"
-        android:textSize="@dimen/item_album_track"
+        android:textSize="@dimen/song_title_text_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/albumCoverImageView" />
+        app:layout_constraintTop_toBottomOf="@id/albumBackgroundImageView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAlbumTracks"
