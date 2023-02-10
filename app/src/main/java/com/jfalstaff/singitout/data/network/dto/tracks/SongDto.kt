@@ -1,7 +1,6 @@
 package com.jfalstaff.singitout.data.network.dto.tracks
 
 import android.os.Parcelable
-import com.google.gson.annotations.Expose
 import com.jfalstaff.singitout.data.network.dto.searchDto.PrimaryArtistDto
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize

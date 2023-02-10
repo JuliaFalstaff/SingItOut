@@ -22,8 +22,10 @@
         <item name="android:textColor">@color/nude</item>
     </style>
 
-    <style name="ThemeSingItOut.SplashScreenStyle" >
-        <item name="android:windowBackground">@drawable/splash_screen</item>
+    <style name="ThemeSingItOut.SplashScreenStyle" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/velvet</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_new_launcher</item>
+        <item name="postSplashScreenTheme">@style/ThemeSingItOut</item>
     </style>
 </resources>
 
