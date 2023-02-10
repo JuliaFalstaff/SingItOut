@@ -20,6 +20,7 @@ object Versions {
     const val moshiVersion = "1.9.1"
     const val moshiConverterVersion = "2.9.0"
     const val pagingVersion = "3.1.1"
+    const val splashScreenVersion = "1.0.0-beta02"
 }
 
 object Dependencies {
@@ -77,4 +78,7 @@ object Dependencies {
 
     //Paging 3
     const val PAGING_DEP = "androidx.paging:paging-runtime:${Versions.pagingVersion}"
+
+    //Splash Screen
+    const val SPLASH_DEP = "androidx.core:core-splashscreen:${Versions.splashScreenVersion}"
 }
