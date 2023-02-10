@@ -1,7 +1,6 @@
 package com.jfalstaff.singitout.data.network.dto.searchDto
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 
