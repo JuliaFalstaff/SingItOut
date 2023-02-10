@@ -107,4 +107,6 @@ android {
 
         //Shimmering
         implementation(Dependencies.SHIMMER_DEP)
+
+        implementation("androidx.core:core-splashscreen:1.0.0-beta02")
     }
